@@ -1,0 +1,32 @@
+.box {
+  background: red;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196f3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+}
+
+.switch {
+  padding: 0;
+}
+
+.custom-textArea {
+  resize: horizontal;
+  /* cursor: text; */
+}
