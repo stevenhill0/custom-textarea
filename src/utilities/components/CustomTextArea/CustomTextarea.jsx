@@ -21,11 +21,24 @@ const CustomTextarea = () => {
   };
 
   const pressEnterToCount = (event) => {
-    const args = [event, characterCount, setCharacterCount, setcharacterArray];
+    const args = [
+      event,
+      characterCount,
+      setCharacterCount,
+      characterArray,
+      setcharacterArray,
+    ];
     countCharacters(...args);
   };
 
-  console.log(`characterCount: ${characterCount}`);
+  const lastNumber = characterArray[characterArray.length - 1];
+  const secondLast = characterArray[characterArray.length - 2];
+  const first = characterArray[0] + 1;
+  const result = lastNumber - secondLast - 1;
+  console.log('First Line : ' + first);
+  console.log('Last Line : ' + result);
+
+  // console.log(`characterCount: ${characterCount}`);
   console.log(`characterArray: ${characterArray}`);
 
   return (
