@@ -11,17 +11,21 @@ export const useCountLines = (
   const firstLine = characterArray[0];
   const lastLine = lastNumber - secondLast - 1;
 
-  console.log('First Line : ' + firstLine);
-  console.log('Last Line : ' + lastLine);
-  console.log(`characterArray: ${characterArray}`);
-
   useEffect(() => {
     if (keyPress.key === 'Enter') {
       setLineCount((previous) => {
         return [...previous, lastLine];
       });
     }
-  }, [keyPress.key, setLineCount, lastLine]);
+  }, [keyPress.key, setLineCount, firstLine, lastLine]);
 
+  const lineArray = lineCount.filter((line) => {
+    return line > 0;
+  });
+
+  console.log(`characterArray: ${characterArray}`);
+  console.log('First Line : ' + firstLine);
+  console.log('Last Line : ' + lastLine);
   console.log('Here we are: ' + lineCount);
+  console.log('Line Array: ' + lineArray);
 };
