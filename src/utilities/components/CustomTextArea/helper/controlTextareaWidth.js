@@ -4,5 +4,6 @@ export const controlWidth = (width, textareaWidth, setTextareaWidth) => {
 
   if (textRows > textareaWidth) {
     setTextareaWidth(textRows);
+    // console.log('Yup: ' + characterArray[1]);
   }
 };
