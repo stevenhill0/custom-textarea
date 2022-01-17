@@ -17,15 +17,16 @@ export const useCountLines = (
         return [...previous, lastLine];
       });
     }
-  }, [keyPress.key, setLineCount, firstLine, lastLine]);
+  }, [keyPress.key, setLineCount, lastLine]);
 
   const lineArray = lineCount.filter((line) => {
     return line > 0;
   });
+  lineArray.unshift(firstLine);
 
   console.log(`characterArray: ${characterArray}`);
   console.log('First Line : ' + firstLine);
   console.log('Last Line : ' + lastLine);
-  console.log('Here we are: ' + lineCount);
+  console.log('Line Count: ' + lineCount);
   console.log('Line Array: ' + lineArray);
 };
