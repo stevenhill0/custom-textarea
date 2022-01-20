@@ -1,36 +1,23 @@
 import TextareaView from './components/TextareaView';
-import { resizeTextArea } from './helper/resizeTextArea';
 import { useCountLines } from './helper/useCountLines';
-import { useState } from 'react';
+import { controlHeight } from './helper/controlTextareaHeight';
+import { controlWidth } from './helper/controlTextareaWidth';
+import { characterCount } from './helper/characterCount';
+import { useState, useEffect } from 'react';
 
 const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
   const [textareaWidth, setTextareaWidth] = useState(1);
   const [characterArray, setcharacterArray] = useState([]);
   const [lineCount, setLineCount] = useState([]);
-  const [keyPress, setkeyPress] = useState({});
+  const [keyPress, setKeyPress] = useState({});
+  const [widthAndHeight, setWidthAndHeight] = useState({});
+  const [linesArray, setLinesArray] = useState([0]);
+  const [characters, setCharacters] = useState(0);
 
-  const handleEvent = (event) => {
-    const args = [
-      event,
-      textareaHeight,
-      setTextareaHeight,
-      textareaWidth,
-      setTextareaWidth,
-      characterArray,
-    ];
-    resizeTextArea(...args);
-  };
-
-  const storeKeyAndCount = (event) => {
-    const {
-      key,
-      target: {
-        value: { length },
-      },
-    } = event;
-
-    setkeyPress({ key: key, length: length + 1 });
+  const storeKeysEvent = (event) => {
+    setKeyPress(event);
+    setCharacters(event.target.value.length);
 
     if (event.key === 'Enter') {
       setcharacterArray((prevCharacters) => {
@@ -38,16 +25,78 @@ const CustomTextarea = () => {
       });
     }
   };
+  const { firstLine } = characterCount(characterArray, keyPress);
+  useCountLines(keyPress, characterArray, setLineCount);
 
-  useCountLines(keyPress, characterArray, lineCount, setLineCount);
+  useEffect(() => {
+    if (keyPress.key === 'Enter') {
+      const lineArray = lineCount.filter((lines) => {
+        return lines > 0;
+      });
+
+      lineArray.unshift(firstLine);
+
+      setLinesArray(lineArray);
+    }
+  }, [
+    keyPress.key,
+    lineCount,
+    firstLine,
+    textareaHeight,
+    textareaWidth,
+    widthAndHeight,
+  ]);
+
+  const { height, width } = widthAndHeight;
+
+  const largestLine = linesArray.reduce((previousLine, currentLine) => {
+    return previousLine > currentLine ? previousLine : currentLine;
+  });
+
+  const storedCharaters = linesArray.reduce((previousLine, currentLine) => {
+    return previousLine + currentLine;
+  });
+
+  const result =
+    keyPress.key === 'Enter'
+      ? characters - storedCharaters
+      : characters - storedCharaters;
+
+  console.log('Line Array last line: ' + linesArray[linesArray.length - 1]);
+  console.log(
+    'Line Array second last line: ' + linesArray[linesArray.length - 2]
+  );
+  console.log('Stored characters: ' + storedCharaters);
+  console.log('Current characters: ' + characters);
+  console.log('Keypress: ' + keyPress.key);
+  console.log('Largest line is' + largestLine);
+  console.log('reset characters: ' + result);
+
+  if (linesArray[0] === 0 && keyPress.key !== 'Enter') {
+    controlWidth(width, textareaWidth, setTextareaWidth);
+  } else if (result > largestLine) {
+    controlWidth(width, textareaWidth, setTextareaWidth);
+  }
+
+  controlHeight(height, textareaHeight, setTextareaHeight);
+
+  const measureEvent = (event) => {
+    const height = event.target.scrollHeight;
+    const width = event.target.scrollWidth;
+
+    setWidthAndHeight({
+      height,
+      width,
+    });
+  };
 
   return (
     <div>
       <TextareaView
         controlHeight={textareaHeight}
         controlWidth={textareaWidth}
-        handleEvent={handleEvent}
-        controlEnterKey={storeKeyAndCount}
+        handleEvent={measureEvent}
+        controlEnterKey={storeKeysEvent}
       />
     </div>
   );

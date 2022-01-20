@@ -1,32 +1,33 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { characterCount } from './characterCount';
 
-export const useCountLines = (
-  keyPress,
-  characterArray,
-  lineCount,
-  setLineCount
-) => {
-  const lastNumber = characterArray[characterArray.length - 1];
-  const secondLast = characterArray[characterArray.length - 2];
-  const firstLine = characterArray[0];
-  const lastLine = lastNumber - secondLast - 1;
+export const useCountLines = (keyPress, characterArray, setLineCount) => {
+  const { lastLine } = characterCount(characterArray);
 
   useEffect(() => {
     if (keyPress.key === 'Enter') {
       setLineCount((previous) => {
         return [...previous, lastLine];
       });
+      setLineCount((previous) => {
+        return [...previous, 1];
+      });
     }
-  }, [keyPress.key, setLineCount, lastLine]);
+  }, [keyPress.key, setLineCount, lastLine, characterArray]);
 
-  const lineArray = lineCount.filter((line) => {
-    return line > 0;
-  });
-  lineArray.unshift(firstLine);
+  // useEffect(() => {
+  //   if (keyPress.key === 'Enter') {
+  //     const lineArray = lineCount.filter((lines) => {
+  //       return lines > 0;
+  //     });
 
-  console.log(`characterArray: ${characterArray}`);
-  console.log('First Line : ' + firstLine);
-  console.log('Last Line : ' + lastLine);
-  console.log('Line Count: ' + lineCount);
-  console.log('Line Array: ' + lineArray);
+  //     lineArray.unshift(firstLine);
+
+  //     // console.log(`characterArray: ${characterArray}`);
+  //     console.log('First Line : ' + firstLine);
+  //     console.log('Last Line : ' + lastLine);
+  //     // console.log('Line Count: ' + lineCount);
+  //     console.log('Line Array: ' + lineArray);
+  //   }
+  // }, [keyPress.key, lineCount, firstLine, lastLine]);
 };

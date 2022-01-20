@@ -1,5 +1,3 @@
-// import { controlHeight } from './helper/controlTextareaHeight';
-// import { controlWidth } from './helper/controlTextareaWidth';
 import { controlHeight } from './controlTextareaHeight';
 import { controlWidth } from './controlTextareaWidth';
 
@@ -16,3 +14,10 @@ export const resizeTextArea = (
   controlHeight(height, textareaHeight, setTextareaHeight);
   controlWidth(width, textareaWidth, setTextareaWidth);
 };
+// const {
+//   key,
+//   target: {
+//     value: { length },
+//   },
+// } = event;
+// { key: key, length: length }
