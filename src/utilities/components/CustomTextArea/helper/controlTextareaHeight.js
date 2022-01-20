@@ -1,4 +1,9 @@
-export const controlHeight = (height, textareaHeight, setTextareaHeight) => {
+export const controlHeight = (
+  widthAndHeight,
+  textareaHeight,
+  setTextareaHeight
+) => {
+  const { height } = widthAndHeight;
   const rowHeight = 15;
   const textRows = Math.ceil(height / rowHeight) - 1;
 
