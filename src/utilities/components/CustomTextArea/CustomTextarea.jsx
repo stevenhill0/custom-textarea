@@ -13,6 +13,16 @@ const CustomTextarea = () => {
   const [widthAndHeight, setWidthAndHeight] = useState({});
   const [characters, setCharacters] = useState(0);
 
+  const measureEvent = (event) => {
+    const height = event.target.scrollHeight;
+    const width = event.target.scrollWidth;
+
+    setWidthAndHeight({
+      height,
+      width,
+    });
+  };
+
   const storeKeys = (event) => {
     setKeyPress(event);
     setCharacters(event.target.value.length);
@@ -39,16 +49,6 @@ const CustomTextarea = () => {
   useAutoWidth(...useAutoWidthArgs);
 
   controlHeight(widthAndHeight, textareaHeight, setTextareaHeight);
-
-  const measureEvent = (event) => {
-    const height = event.target.scrollHeight;
-    const width = event.target.scrollWidth;
-
-    setWidthAndHeight({
-      height,
-      width,
-    });
-  };
 
   return (
     <div>
