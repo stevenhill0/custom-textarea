@@ -59,8 +59,8 @@ const CustomTextarea = () => {
 
   const result =
     keyPress.key === 'Enter'
-      ? characters - storedCharaters
-      : characters - storedCharaters;
+      ? characters + 1 - storedCharaters
+      : characters + 1 - storedCharaters;
 
   console.log('Line Array last line: ' + linesArray[linesArray.length - 1]);
   console.log(
