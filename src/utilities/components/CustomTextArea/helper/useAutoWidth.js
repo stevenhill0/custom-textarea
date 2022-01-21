@@ -1,31 +1,31 @@
-import { characterCount } from './characterCount';
+import { countCharacters } from './countCharacters';
 import { controlWidth } from './controlTextareaWidth';
 import { useState, useEffect } from 'react';
 
 export const useAutoWidth = (
-  characterArray,
+  charactersArray,
   keyPress,
-  lineCount,
-  widthAndHeight,
-  characters,
+  linesCount,
+  measureWidthAndHeight,
+  activeCharacters,
   textareaWidth,
   setTextareaWidth
 ) => {
+  const { firstLine } = countCharacters(charactersArray);
   const [linesArray, setLinesArray] = useState([0]);
-  const { firstLine } = characterCount(characterArray);
-  const { width } = widthAndHeight;
+  const { width } = measureWidthAndHeight;
 
   useEffect(() => {
     if (keyPress.key === 'Enter') {
-      const lineArray = lineCount.filter((lines) => {
+      const newArray = linesCount.filter((lines) => {
         return lines > 0;
       });
 
-      lineArray.unshift(firstLine);
+      newArray.unshift(firstLine);
 
-      setLinesArray(lineArray);
+      setLinesArray(newArray);
     }
-  }, [keyPress.key, lineCount, firstLine, setLinesArray]);
+  }, [keyPress.key, linesCount, firstLine, setLinesArray]);
 
   const largestLine = linesArray.reduce((previousLine, currentLine) => {
     return previousLine > currentLine ? previousLine : currentLine;
@@ -35,7 +35,7 @@ export const useAutoWidth = (
     return previousLine + currentLine;
   });
 
-  const activeLine = characters + 1 - combinedCharacters;
+  const activeLine = activeCharacters + 1 - combinedCharacters;
 
   if (
     (linesArray[0] === 0 && keyPress.key !== 'Enter') ||

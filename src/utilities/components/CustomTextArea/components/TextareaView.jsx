@@ -1,18 +1,13 @@
-const TextareaView = ({
-  controlHeight,
-  controlWidth,
-  handleEvent,
-  controlEnterKey,
-}) => {
+const TextareaView = ({ controlHeight, controlWidth, onType, onKeyPress }) => {
   return (
     <textarea
       id="new"
       rows={controlHeight}
       cols={controlWidth}
-      onChange={handleEvent}
+      onChange={onType}
       className="custom-textArea"
       autoFocus
-      onKeyPress={controlEnterKey}
+      onKeyPress={onKeyPress}
     ></textarea>
   );
 };
