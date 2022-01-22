@@ -9,7 +9,7 @@ export const useAutoWidth = (
   measureWidthAndHeight,
   activeCharacters,
   textareaWidth,
-  setTextareaWidth
+  setTextareaWidth,
 ) => {
   const { firstLine } = countCharacters(charactersArray);
   const [linesArray, setLinesArray] = useState([0]);

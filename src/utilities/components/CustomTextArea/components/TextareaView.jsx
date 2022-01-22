@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-autofocus */
 const TextareaView = ({ controlHeight, controlWidth, onType, onKeyPress }) => {
   return (
     <textarea

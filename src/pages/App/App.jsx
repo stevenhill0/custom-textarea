@@ -12,7 +12,13 @@ function App() {
   return (
     <div>
       <div className="grid-container">
-        <div id="one" onClick={switchOn}>
+        <div
+          tabIndex="0"
+          role="textbox"
+          id="one"
+          onClick={switchOn}
+          onKeyPress={switchOn}
+        >
           {counter === 1 ? <CustomTextarea /> : null}
         </div>
         <div>2</div>

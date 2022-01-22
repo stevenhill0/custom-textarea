@@ -1,7 +1,7 @@
 export const controlHeight = (
   widthAndHeight,
   textareaHeight,
-  setTextareaHeight
+  setTextareaHeight,
 ) => {
   const { height } = widthAndHeight;
   const rowHeight = 15;
