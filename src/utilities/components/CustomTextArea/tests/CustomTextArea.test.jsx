@@ -2,8 +2,10 @@ import { render, screen } from '@testing-library/react';
 import CustomTextarea from '../CustomTextarea';
 import userEvent from '@testing-library/user-event';
 
-test('Click to create textarea', () => {
+test('Click and type in custom textarea', () => {
   render(<CustomTextarea />);
-  const div = screen.getByRole('');
+
   const customTextarea = screen.getByRole('textbox');
+  userEvent.type(customTextarea, '12345 {enter}');
+  userEvent.type(customTextarea, '123456789 {enter}');
 });
