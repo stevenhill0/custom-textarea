@@ -2,6 +2,8 @@ import CustomTextarea from '../../utilities/components/CustomTextArea/CustomText
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useState } from 'react';
+// import DragAndDrop from '../../utilities/components/CustomTextArea/components/DragAndDrop';
+import DivContainer from '../../utilities/components/DragAndDrop/DivContainer';
 import './App.css';
 
 function App() {
@@ -12,9 +14,10 @@ function App() {
   };
 
   return (
-    <div>
-      <DndProvider backend={HTML5Backend}>
-        <div className="grid-container">
+    <DndProvider backend={HTML5Backend}>
+      <div>
+        <DivContainer />
+        {/* <div className="grid-container">
           <div
             tabIndex="0"
             role="textbox"
@@ -31,9 +34,9 @@ function App() {
           <div>6</div>
           <div>7</div>
           <div>8</div>
-        </div>
-      </DndProvider>
-    </div>
+        </div> */}
+      </div>
+    </DndProvider>
   );
 }
 
