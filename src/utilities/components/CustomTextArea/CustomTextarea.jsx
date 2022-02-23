@@ -1,6 +1,6 @@
 import TextareaView from './components/TextareaView';
 import { useCountLines } from './helper/useCountLines';
-import { controlHeight } from './helper/controlTextareaHeight';
+import useControlDimensions from './helper/useControlDimensions';
 import { useAutoWidth } from './helper/useAutoWidth';
 import { useState } from 'react';
 
@@ -16,10 +16,12 @@ const CustomTextarea = () => {
   const measureEvent = (event) => {
     const height = event.target.scrollHeight;
     const width = event.target.scrollWidth;
+    const rows = event.target.rows;
 
     setMeasureWidthAndHeight({
       height,
       width,
+      rows,
     });
   };
 
@@ -48,15 +50,21 @@ const CustomTextarea = () => {
 
   useAutoWidth(...useAutoWidthArgs);
 
-  controlHeight(measureWidthAndHeight, textareaHeight, setTextareaHeight);
+  useControlDimensions(
+    keyPress,
+    setTextareaHeight,
+    textareaHeight,
+    measureWidthAndHeight,
+    charactersArray,
+  );
 
   return (
     <div>
       <TextareaView
         controlHeight={textareaHeight}
         controlWidth={textareaWidth}
-        onType={measureEvent}
-        onKeyPress={storeKeys}
+        onType={measureEvent} // 2 re-renders of 5
+        onKeyDown={storeKeys} // 3 re-renders of 5
       />
     </div>
   );

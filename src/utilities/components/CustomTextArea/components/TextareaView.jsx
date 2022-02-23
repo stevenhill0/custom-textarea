@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-const TextareaView = ({ controlHeight, controlWidth, onType, onKeyPress }) => {
+const TextareaView = ({ controlHeight, controlWidth, onType, onKeyDown }) => {
   return (
     <textarea
       id="new"
@@ -8,7 +8,7 @@ const TextareaView = ({ controlHeight, controlWidth, onType, onKeyPress }) => {
       onChange={onType}
       className="custom-textArea"
       autoFocus
-      onKeyPress={onKeyPress}
+      onKeyDown={onKeyDown}
     ></textarea>
   );
 };

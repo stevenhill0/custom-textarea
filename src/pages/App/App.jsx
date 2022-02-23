@@ -16,7 +16,16 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div>
-        <DivContainer />
+        <div
+          className="Board"
+          tabIndex="0"
+          role="textbox"
+          onClick={switchOn}
+          onKeyPress={switchOn}
+        >
+          {counter === 1 ? <DivContainer /> : null}
+        </div>
+
         {/* <div className="grid-container">
           <div
             tabIndex="0"

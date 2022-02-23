@@ -29,6 +29,18 @@
 .custom-textArea {
   resize: horizontal;
   /* cursor: text; */
+  /* margin: 0;
+  position: absolute;
+  top: 50%; */
+  /* -ms-transform: translateY(-50%);
+  transform: translateY(-50%);*/
+}
+
+.custom-textArea:hover {
+  border: 1px solid black;
+}
+.custom-textArea:focus {
+  outline: none;
 }
 
 .App {
@@ -38,8 +50,9 @@
 }
 
 .Pictures {
-  text-align: center;
-  margin: 10px;
+  position: relative;
+  /* text-align: center; */
+  margin: 0;
   border: 2px solid black;
   width: 50px;
   height: 50px;
@@ -51,6 +64,6 @@ img {
 .Board {
   width: 100vw;
   height: 100vh;
-  border: 5px solid black;
+  border: 0px solid black;
   position: relative;
 }

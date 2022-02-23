@@ -1,7 +1,10 @@
-export const controlHeight = (
+import { useEffect } from 'react';
+
+const useControlTextareaHeight = (
   widthAndHeight,
   textareaHeight,
   setTextareaHeight,
+  keyPress,
 ) => {
   const { height } = widthAndHeight;
   const rowHeight = 15;
@@ -11,3 +14,5 @@ export const controlHeight = (
     setTextareaHeight(textRows);
   }
 };
+
+export default useControlTextareaHeight;

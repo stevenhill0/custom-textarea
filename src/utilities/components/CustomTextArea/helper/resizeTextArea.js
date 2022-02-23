@@ -1,4 +1,4 @@
-import { controlHeight } from './controlTextareaHeight';
+import { controlHeight } from './useControlTextareaHeight';
 import { controlWidth } from './controlTextareaWidth';
 
 export const resizeTextArea = (
@@ -6,7 +6,7 @@ export const resizeTextArea = (
   textareaHeight,
   setTextareaHeight,
   textareaWidth,
-  setTextareaWidth
+  setTextareaWidth,
 ) => {
   const height = event.target.scrollHeight;
   const width = event.target.scrollWidth;
@@ -14,10 +14,3 @@ export const resizeTextArea = (
   controlHeight(height, textareaHeight, setTextareaHeight);
   controlWidth(width, textareaWidth, setTextareaWidth);
 };
-// const {
-//   key,
-//   target: {
-//     value: { length },
-//   },
-// } = event;
-// { key: key, length: length }
