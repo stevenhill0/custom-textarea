@@ -5,6 +5,10 @@ import { getStyle } from '../styles';
 export const DraggableDiv = ({ id, top, left }) => {
   getStyle(top, left);
 
+  /**
+   * Library
+   */
+
   const [{ isDragging }, drag] = useDrag(() => {
     return {
       type: 'textarea',
@@ -14,6 +18,10 @@ export const DraggableDiv = ({ id, top, left }) => {
       },
     };
   }, [id, top, left]);
+
+  /**
+   * Component
+   */
 
   return (
     <div ref={drag} style={getStyle(top, left, isDragging)}>

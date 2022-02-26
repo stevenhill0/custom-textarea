@@ -7,12 +7,20 @@ export const DragArea = () => {
     a: { top: 20, left: 180 },
   });
 
+  /**
+   * State
+   */
+
   const moveBox = useCallback(
     (id, top, left) => {
       setBoxes({ ...boxes, [id]: { top, left } });
     },
     [boxes],
   );
+
+  /**
+   * Library
+   */
 
   const [, drop] = useDrop(() => {
     return {
@@ -29,6 +37,10 @@ export const DragArea = () => {
       // },
     };
   }, [moveBox]);
+
+  /**
+   * Component
+   */
 
   return (
     <>

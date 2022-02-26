@@ -10,6 +10,10 @@ export const useControlDimensions = (
   textareaWidth,
   charactersArray,
 ) => {
+  /**
+   * Custom Hooks
+   */
+
   useAutoWidth(
     pressedKeysAndMeasurement,
     setTextareaWidth,
