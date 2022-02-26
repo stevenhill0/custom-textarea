@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
 
-const useControlTextareaHeight = (
-  widthAndHeight,
-  textareaHeight,
+export const useControlTextareaHeight = (
+  pressedKeysAndMeasurement,
   setTextareaHeight,
-  keyPress,
+  textareaHeight,
 ) => {
-  const { height } = widthAndHeight;
-  const rowHeight = 15;
-  const textRows = Math.ceil(height / rowHeight) - 1;
+  const { keyPress, liveHeight } = pressedKeysAndMeasurement;
 
-  if (textRows > textareaHeight) {
-    setTextareaHeight(textRows);
+  if (keyPress === 'Enter') {
+    const rowHeight = 15;
+    const textRows = Math.ceil(liveHeight / rowHeight);
+
+    if (textRows > textareaHeight) {
+      setTextareaHeight(textRows);
+    }
   }
 };
-
-export default useControlTextareaHeight;

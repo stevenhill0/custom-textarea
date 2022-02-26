@@ -2,8 +2,7 @@ import CustomTextarea from '../../utilities/components/CustomTextArea/CustomText
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useState } from 'react';
-// import DragAndDrop from '../../utilities/components/CustomTextArea/components/DragAndDrop';
-import DivContainer from '../../utilities/components/DragAndDrop/DivContainer';
+import { DragArea } from '../../utilities/components/DragAndDrop/DragArea';
 import './App.css';
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
           onClick={switchOn}
           onKeyPress={switchOn}
         >
-          {counter === 1 ? <DivContainer /> : null}
+          {counter === 1 ? <DragArea /> : null}
         </div>
 
         {/* <div className="grid-container">

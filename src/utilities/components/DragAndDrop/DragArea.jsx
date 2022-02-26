@@ -1,9 +1,8 @@
-import DraggableDiv from './DraggableDiv';
+import { DraggableDiv } from './components/DraggableDiv';
 import { useState, useCallback } from 'react';
 import { useDrop } from 'react-dnd';
-import '../../../pages/App/App.css';
 
-const DragArea = () => {
+export const DragArea = () => {
   const [boxes, setBoxes] = useState({
     a: { top: 20, left: 180 },
   });
@@ -41,5 +40,3 @@ const DragArea = () => {
     </>
   );
 };
-
-export default DragArea;

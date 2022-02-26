@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
 import { countCharacters } from './countCharacters';
 
-export const useCountLines = (keyPress, charactersArray, setLinesCount) => {
+export const useCountLines = (
+  charactersArray,
+  pressedKeysAndMeasurement,
+  setLinesCount,
+) => {
   const { lastLine } = countCharacters(charactersArray);
+  const { keyPress } = pressedKeysAndMeasurement;
 
   useEffect(() => {
-    if (keyPress.key === 'Enter') {
+    if (keyPress === 'Enter') {
       setLinesCount((previous) => {
         return [...previous, lastLine];
       });
@@ -15,5 +20,5 @@ export const useCountLines = (keyPress, charactersArray, setLinesCount) => {
         return [...previous, 1];
       });
     }
-  }, [keyPress.key, setLinesCount, lastLine, charactersArray]);
+  }, [keyPress, setLinesCount, lastLine, charactersArray]);
 };

@@ -1,6 +1,6 @@
-export const controlWidth = (width, textareaWidth, setTextareaWidth) => {
+export const controlWidth = (liveWidth, textareaWidth, setTextareaWidth) => {
   const rowWidth = 7.5;
-  const textRows = Math.ceil(width / rowWidth) - 1;
+  const textRows = Math.ceil(liveWidth / rowWidth) - 1;
 
   if (textRows > textareaWidth) {
     setTextareaWidth(textRows);

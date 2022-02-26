@@ -27,6 +27,7 @@
 }
 
 .custom-textArea {
+  overflow-y: hidden;
   resize: horizontal;
   /* cursor: text; */
   /* margin: 0;

@@ -1,33 +1,27 @@
-import TextareaView from './components/TextareaView';
-import { useCountLines } from './helper/useCountLines';
-import useControlDimensions from './helper/useControlDimensions';
-import { useAutoWidth } from './helper/useAutoWidth';
+import { TextareaView } from './components/TextareaView/TextareaView';
+import { useControlDimensions } from './helper/useControlDimensions';
 import { useState } from 'react';
 
-const CustomTextarea = () => {
+export const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
   const [textareaWidth, setTextareaWidth] = useState(1);
-  const [keyPress, setKeyPress] = useState({});
-  const [activeCharacters, setActiveCharacters] = useState(0);
   const [charactersArray, setCharactersArray] = useState([]);
-  const [linesCount, setLinesCount] = useState([]);
-  const [measureWidthAndHeight, setMeasureWidthAndHeight] = useState({});
+  const [pressedKeysAndMeasurement, setPressedKeysAndMeasurement] = useState({
+    keyPress: null,
+    liveHeight: 0,
+    liveWidth: 0,
+    liveRows: 0,
+    typedCharacters: 0,
+  });
 
-  const measureEvent = (event) => {
-    const height = event.target.scrollHeight;
-    const width = event.target.scrollWidth;
-    const rows = event.target.rows;
-
-    setMeasureWidthAndHeight({
-      height,
-      width,
-      rows,
+  const keyPressData = (event) => {
+    setPressedKeysAndMeasurement({
+      keyPress: event.key,
+      liveHeight: event.target.scrollHeight,
+      liveWidth: event.target.scrollWidth,
+      liveRows: event.target.rows,
+      typedCharacters: event.target.value.length,
     });
-  };
-
-  const storeKeys = (event) => {
-    setKeyPress(event);
-    setActiveCharacters(event.target.value.length);
 
     if (event.key === 'Enter') {
       setCharactersArray((prevCharacters) => {
@@ -36,25 +30,12 @@ const CustomTextarea = () => {
     }
   };
 
-  useCountLines(keyPress, charactersArray, setLinesCount);
-
-  const useAutoWidthArgs = [
-    charactersArray,
-    keyPress,
-    linesCount,
-    measureWidthAndHeight,
-    activeCharacters,
-    textareaWidth,
-    setTextareaWidth,
-  ];
-
-  useAutoWidth(...useAutoWidthArgs);
-
   useControlDimensions(
-    keyPress,
+    pressedKeysAndMeasurement,
     setTextareaHeight,
     textareaHeight,
-    measureWidthAndHeight,
+    setTextareaWidth,
+    textareaWidth,
     charactersArray,
   );
 
@@ -63,11 +44,8 @@ const CustomTextarea = () => {
       <TextareaView
         controlHeight={textareaHeight}
         controlWidth={textareaWidth}
-        onType={measureEvent} // 2 re-renders of 5
-        onKeyDown={storeKeys} // 3 re-renders of 5
+        onKeyDown={keyPressData}
       />
     </div>
   );
 };
-
-export default CustomTextarea;

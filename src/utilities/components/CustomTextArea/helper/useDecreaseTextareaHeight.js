@@ -2,19 +2,19 @@ import { useEffect } from 'react';
 import { countCharacters } from './countCharacters';
 
 export const useDecreaseTextareaHeight = (
-  keyPress,
+  pressedKeysAndMeasurement,
   setTextareaHeight,
   textareaHeight,
-  measureWidthAndHeight,
-  charactersArray,
 ) => {
-  const { rows } = measureWidthAndHeight;
+  const { keyPress, liveRows } = pressedKeysAndMeasurement;
+
   //   const { height } = measureWidthAndHeight;
   //   const rowHeight = 15;
   //   const textRows = Math.ceil(height / rowHeight) - 1;
   // const { lastLine } = countCharacters(charactersArray);
+
   useEffect(() => {
-    if (keyPress.key === 'Backspace') {
+    if (keyPress === 'Backspace') {
       setTextareaHeight((prev) => {
         return (prev = 2);
       });
