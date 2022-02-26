@@ -1,4 +1,8 @@
 export const countCharacters = (charactersArray) => {
+  /**
+   * Logic
+   */
+
   const lastNumber = charactersArray[charactersArray.length - 1];
   const secondLast = charactersArray[charactersArray.length - 2];
   const firstLine = charactersArray[0];

@@ -18,8 +18,16 @@ export const useAutoWidth = (
   const { liveWidth, keyPress, typedCharacters } = pressedKeysAndMeasurement;
   const { firstLine } = countCharacters(charactersArray);
 
+  /**
+   * Custom Hooks
+   */
+
   useCountLines(charactersArray, pressedKeysAndMeasurement, setLinesCount);
   useCreateLinesArray(keyPress, linesCount, firstLine, setLinesArray);
+
+  /**
+   * Logic
+   */
 
   const largestLine = findLargestLine(linesArray);
   const combinedCharacters = combineCharacters(linesArray);

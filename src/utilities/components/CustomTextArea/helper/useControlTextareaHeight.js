@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-
 export const useControlTextareaHeight = (
   pressedKeysAndMeasurement,
   setTextareaHeight,
   textareaHeight,
 ) => {
   const { keyPress, liveHeight } = pressedKeysAndMeasurement;
+
+  /**
+   * Logic
+   */
 
   if (keyPress === 'Enter') {
     const rowHeight = 15;

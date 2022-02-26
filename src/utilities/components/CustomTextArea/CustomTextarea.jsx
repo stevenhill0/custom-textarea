@@ -14,6 +14,10 @@ export const CustomTextarea = () => {
     typedCharacters: 0,
   });
 
+  /**
+   * Handlers
+   */
+
   const keyPressData = (event) => {
     setPressedKeysAndMeasurement({
       keyPress: event.key,
@@ -30,6 +34,10 @@ export const CustomTextarea = () => {
     }
   };
 
+  /**
+   * Custom Hooks
+   */
+
   useControlDimensions(
     pressedKeysAndMeasurement,
     setTextareaHeight,
@@ -38,6 +46,10 @@ export const CustomTextarea = () => {
     textareaWidth,
     charactersArray,
   );
+
+  /**
+   * Component
+   */
 
   return (
     <div>

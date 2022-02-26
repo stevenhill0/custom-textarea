@@ -9,6 +9,10 @@ export const useCountLines = (
   const { lastLine } = countCharacters(charactersArray);
   const { keyPress } = pressedKeysAndMeasurement;
 
+  /**
+   * Effects
+   */
+
   useEffect(() => {
     if (keyPress === 'Enter') {
       setLinesCount((previous) => {

@@ -13,6 +13,10 @@ export const useDecreaseTextareaHeight = (
   //   const textRows = Math.ceil(height / rowHeight) - 1;
   // const { lastLine } = countCharacters(charactersArray);
 
+  /**
+   * Effects
+   */
+
   useEffect(() => {
     if (keyPress === 'Backspace') {
       setTextareaHeight((prev) => {

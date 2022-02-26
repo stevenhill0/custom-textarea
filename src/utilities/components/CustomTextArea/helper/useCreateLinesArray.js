@@ -6,6 +6,10 @@ export const useCreateLinesArray = (
   firstLine,
   setLinesArray,
 ) => {
+  /**
+   * Effects
+   */
+
   useEffect(() => {
     if (keyPress === 'Enter') {
       const newArray = linesCount.filter((lines) => {
