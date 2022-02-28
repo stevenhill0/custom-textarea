@@ -5,23 +5,41 @@ export const useDecreaseTextareaHeight = (
   pressedKeysAndMeasurement,
   setTextareaHeight,
   textareaHeight,
+  charactersArray,
 ) => {
-  const { keyPress, liveRows } = pressedKeysAndMeasurement;
+  const { keyPress, liveRows, liveHeight, rowValue } =
+    pressedKeysAndMeasurement;
 
-  //   const { height } = measureWidthAndHeight;
-  //   const rowHeight = 15;
-  //   const textRows = Math.ceil(height / rowHeight) - 1;
-  // const { lastLine } = countCharacters(charactersArray);
+  // const rowHeight = 15;
+  // const textRows = Math.ceil(liveHeight / rowHeight) - 1;
+  const { lastLine, firstLine } = countCharacters(charactersArray);
 
   /**
    * Effects
    */
-
-  useEffect(() => {
-    if (keyPress === 'Backspace') {
-      setTextareaHeight((prev) => {
-        return (prev = 2);
-      });
-    }
-  }, [keyPress, setTextareaHeight]);
+  // console.log(lastLine);
+  // useEffect(() => {
+  //   if (keyPress === 'Backspace') {
+  //     setTextareaHeight((prev) => {
+  //       return prev - 1;
+  //     });
+  //   }
+  // }, [keyPress, setTextareaHeight, rowValue, pressedKeysAndMeasurement]);
 };
+
+// function CustomTextarea({minRows}) {
+//   const [rows, setRows] = React.useState(minRows);
+//   const [value, setValue] = React.useState("");
+
+//   React.useEffect(() => {
+//     const rowlen = value.split("\n");
+
+//     if (rowlen.length > minRows) {
+//       setRows(rowlen.length);
+//     }
+//   }, [value]);
+
+//   return (
+//     <textarea rows={rows} onChange={(text) => setValue(text.target.value)} />
+//   );
+// }

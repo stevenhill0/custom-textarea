@@ -30,5 +30,6 @@ export const useControlDimensions = (
     pressedKeysAndMeasurement,
     setTextareaHeight,
     textareaHeight,
+    charactersArray,
   );
 };

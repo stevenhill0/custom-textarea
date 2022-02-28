@@ -30,11 +30,21 @@ export const useAutoWidth = (
    */
 
   const largestLine = findLargestLine(linesArray);
-  const combinedCharacters = combineCharacters(linesArray);
-  const activeLine = typedCharacters + 1 - combinedCharacters;
+  const combinedCharacters = combineCharacters(linesArray, keyPress);
+
+  let activeLine = typedCharacters - combinedCharacters;
+
+  console.log('linesArray: ' + linesArray);
+  console.log('linesCount: ' + linesCount);
+  console.log('typedCharacters: ' + typedCharacters);
+  console.log('combinedCharacters: ' + combinedCharacters);
+
+  console.log('activeLine: ' + activeLine);
+  console.log('largestLine: ' + largestLine);
+  console.log('firstLine: ' + firstLine);
 
   if (
-    (linesArray[0] === 0 && keyPress !== 'Enter') ||
+    (firstLine === 0 && keyPress !== 'Enter') ||
     (activeLine > largestLine && keyPress !== 'Enter')
   ) {
     controlWidth(liveWidth, textareaWidth, setTextareaWidth);

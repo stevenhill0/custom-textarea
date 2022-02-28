@@ -24,7 +24,8 @@ export const CustomTextarea = () => {
       liveHeight: event.target.scrollHeight,
       liveWidth: event.target.scrollWidth,
       liveRows: event.target.rows,
-      typedCharacters: event.target.value.length,
+      typedCharacters: event.target.value.length + 1,
+      rowValue: event.target.value,
     });
 
     if (event.key === 'Enter') {
