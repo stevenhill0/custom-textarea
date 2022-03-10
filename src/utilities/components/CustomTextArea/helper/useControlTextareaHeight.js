@@ -1,9 +1,9 @@
 export const useControlTextareaHeight = (
-  pressedKeysAndMeasurement,
+  pressedKeysAndMeasure,
   setTextareaHeight,
   textareaHeight,
 ) => {
-  const { keyPress, liveHeight } = pressedKeysAndMeasurement;
+  const { keyPress, liveHeight } = pressedKeysAndMeasure;
 
   /**
    * Logic

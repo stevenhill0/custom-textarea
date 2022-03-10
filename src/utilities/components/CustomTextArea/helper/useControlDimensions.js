@@ -3,7 +3,7 @@ import { useControlTextareaHeight } from './useControlTextareaHeight';
 import { useAutoWidth } from './useAutoWidth';
 
 export const useControlDimensions = (
-  pressedKeysAndMeasurement,
+  pressedKeysAndMeasure,
   setTextareaHeight,
   textareaHeight,
   setTextareaWidth,
@@ -15,19 +15,19 @@ export const useControlDimensions = (
    */
 
   useAutoWidth(
-    pressedKeysAndMeasurement,
+    pressedKeysAndMeasure,
     setTextareaWidth,
     textareaWidth,
     charactersArray,
   );
 
   useControlTextareaHeight(
-    pressedKeysAndMeasurement,
+    pressedKeysAndMeasure,
     setTextareaHeight,
     textareaHeight,
   );
   useDecreaseTextareaHeight(
-    pressedKeysAndMeasurement,
+    pressedKeysAndMeasure,
     setTextareaHeight,
     textareaHeight,
     charactersArray,

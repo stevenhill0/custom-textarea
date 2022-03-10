@@ -1,23 +1,16 @@
 import { useEffect } from 'react';
 
-export const useCreateLinesArray = (
-  keyPress,
-  linesCount,
-  firstLine,
-  setLinesArray,
-) => {
+export const useCreateLinesArray = (keyPress, lastLine, setLinesArray) => {
   /**
    * Effects
    */
 
   useEffect(() => {
     if (keyPress === 'Enter') {
-      const newArray = linesCount.filter((lines) => {
-        return lines > 0;
+      //Add 1 to array to include each Enter key press
+      setLinesArray((previous) => {
+        return [...previous, lastLine, 1];
       });
-
-      newArray.unshift(firstLine);
-      setLinesArray(newArray);
     }
-  }, [keyPress, linesCount, firstLine, setLinesArray]);
+  }, [keyPress, lastLine, setLinesArray]);
 };
