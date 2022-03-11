@@ -8,8 +8,8 @@ export const useDecreaseTextareaWidth = (
   activeLine,
   largestLine,
   firstLine,
-  typedCharacters,
-  charactersArray,
+  typedOutCharacters,
+  countCharactersArray,
 ) => {
   /**
    * Logic
@@ -18,17 +18,17 @@ export const useDecreaseTextareaWidth = (
   const maxLength = 7.41;
   const textRows = Math.floor(liveWidth / maxLength - 1);
 
-  const minliveWidth = 36;
-  const maxliveWidth = 600;
+  const minLiveWidth = 36;
+  const maxLiveWidth = 600;
 
   useEffect(() => {
     if (
       keyPress === 'Backspace' &&
-      liveWidth > minliveWidth &&
-      activeLine * 7 + 33 < maxliveWidth &&
-      activeLine > firstLine &&
-      activeLine > largestLine &&
-      activeLine + largestLine > firstLine
+      liveWidth > minLiveWidth &&
+      activeLine * 7 + 33 < maxLiveWidth && //* 7 + 33 is to balance the numbers between activeLine and maxLiveWidth
+      activeLine > firstLine
+      // activeLine > largestLine &&
+      // activeLine + largestLine > firstLine
     ) {
       setTextareaWidth((preValue) => {
         return preValue - 1;
@@ -43,12 +43,12 @@ export const useDecreaseTextareaWidth = (
     firstLine,
   ]);
 
-  // console.log('livewidth: ' + liveWidth);
+  // console.log('liveWidth: ' + liveWidth);
   // console.log('textRows: ' + textRows);
   // console.log('textareaWidth: ' + textareaWidth);
   // console.log('firstLine: ' + firstLine);
   // console.log('largestLine: ' + largestLine);
   // console.log('activeLine: ' + activeLine);
-  // console.log('typedCharacters: ' + typedCharacters);
-  // console.log('charactersArray,: ' + charactersArray);
+  // console.log(' typedOutCharacters: ' +  typedOutCharacters);
+  // console.log('countCharactersArray,: ' + countCharactersArray);
 };

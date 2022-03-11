@@ -2,7 +2,7 @@ import { countCharacters } from './countCharacters';
 import { useCreateLinesArray } from './useCreateLinesArray';
 import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
-import { combineCharacters } from './combineCharacters';
+import { useActiveLine } from './useActiveLine';
 import { findLargestLine } from './findLargestLine';
 import { useFilteredLinesArray } from './useFilteredLinesArray';
 import { useState } from 'react';
@@ -11,44 +11,17 @@ export const useAutoWidth = (
   pressedKeysAndMeasure,
   setTextareaWidth,
   textareaWidth,
-  charactersArray,
+  countCharactersArray,
 ) => {
   const [linesArray, setLinesArray] = useState([]);
   const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
 
-  const { liveWidth, keyPress, typedCharacters } = pressedKeysAndMeasure;
-  const { firstLine, lastLine } = countCharacters(charactersArray);
+  const { liveWidth, keyPress, typedOutCharacters } = pressedKeysAndMeasure;
+  const { firstLine, lastLine } = countCharacters(countCharactersArray);
 
   /**
-   * Custom Hooks
+   *  Logic
    */
-
-  useCreateLinesArray(keyPress, lastLine, setLinesArray);
-  useFilteredLinesArray(keyPress, firstLine, linesArray, setFilteredLinesArray);
-
-  /**
-   * Logic
-   */
-
-  const largestLine = findLargestLine(filteredLinesArray);
-
-  let combinedCharacters = combineCharacters(
-    filteredLinesArray,
-    typedCharacters,
-  );
-
-  let activeLine = typedCharacters - combinedCharacters;
-
-  // console.log('linesArray: ' + linesArray);
-  // console.log('linesCount: ' + linesCount);
-  // console.log('typedCharacters: ' + typedCharacters);
-  // console.log('combinedCharacters: ' + combinedCharacters);
-
-  // console.log('largestLine: ' + largestLine);
-  // console.log('activeLine: ' + activeLine);
-  // console.log('firstLine: ' + firstLine);
-  // console.log(keyPress);
-  console.log(linesArray);
 
   const keyCheck = [
     'Enter',
@@ -68,6 +41,39 @@ export const useAutoWidth = (
   });
   const pressedKey = keyArray.toString();
 
+  /**
+   * Custom Hooks
+   */
+  console.log(typedOutCharacters);
+  console.log(countCharactersArray);
+
+  useCreateLinesArray(keyPress, lastLine, setLinesArray);
+  useFilteredLinesArray(keyPress, firstLine, linesArray, setFilteredLinesArray);
+
+  const activeLine = useActiveLine(
+    keyPress,
+    pressedKey,
+    filteredLinesArray,
+    typedOutCharacters,
+  );
+
+  /**
+   * Logic
+   */
+
+  const largestLine = findLargestLine(filteredLinesArray);
+
+  // console.log('linesArray: ' + linesArray);
+  // console.log('linesCount: ' + linesCount);
+  // console.log(' typedOutCharacters: ' +  typedOutCharacters);
+  // console.log('combinedCharacters: ' + combinedCharacters);
+
+  // console.log('largestLine: ' + largestLine);
+  // console.log('activeLine: ' + activeLine);
+  // console.log('firstLine: ' + firstLine);
+  // console.log(keyPress);
+  // console.log(combinedCharacters);
+
   if (
     (keyPress !== pressedKey && firstLine === 0) ||
     (keyPress !== pressedKey && activeLine > largestLine)
@@ -83,7 +89,7 @@ export const useAutoWidth = (
     activeLine,
     largestLine,
     firstLine,
-    typedCharacters,
-    charactersArray,
+    typedOutCharacters,
+    countCharactersArray,
   );
 };

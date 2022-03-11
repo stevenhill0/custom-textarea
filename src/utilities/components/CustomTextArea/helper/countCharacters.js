@@ -1,11 +1,11 @@
-export const countCharacters = (charactersArray) => {
+export const countCharacters = (countCharactersArray) => {
   /**
    * Logic
    */
 
-  const lastNumber = charactersArray[charactersArray.length - 1];
-  const secondLast = charactersArray[charactersArray.length - 2];
-  const firstLine = charactersArray[0];
+  const lastNumber = countCharactersArray[countCharactersArray.length - 1];
+  const secondLast = countCharactersArray[countCharactersArray.length - 2];
+  const firstLine = countCharactersArray[0];
   const lastLine = lastNumber - secondLast - 1;
 
   const lines = { firstLine, lastLine };

@@ -5,13 +5,13 @@ import { useState } from 'react';
 export const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
   const [textareaWidth, setTextareaWidth] = useState(1);
-  const [charactersArray, setCharactersArray] = useState([]);
+  const [countCharactersArray, setCountCharactersArray] = useState([]);
   const [pressedKeysAndMeasure, setPressedKeysAndMeasure] = useState({
     keyPress: null,
     liveHeight: 0,
     liveWidth: 0,
     liveRows: 0,
-    typedCharacters: 0,
+    typedOutCharacters: 0,
   });
 
   /**
@@ -24,12 +24,12 @@ export const CustomTextarea = () => {
       liveHeight: event.target.scrollHeight,
       liveWidth: event.target.scrollWidth,
       liveRows: event.target.rows,
-      typedCharacters: event.target.value.length + 1, // +1 cos length is 0-based
+      typedOutCharacters: event.target.value.length + 1, // +1 cos length is 0-based
       rowValue: event.target.value,
     });
 
     if (event.key === 'Enter') {
-      setCharactersArray((prevCharacters) => {
+      setCountCharactersArray((prevCharacters) => {
         return [...prevCharacters, event.target.value.length];
       });
     }
@@ -45,7 +45,7 @@ export const CustomTextarea = () => {
     textareaHeight,
     setTextareaWidth,
     textareaWidth,
-    charactersArray,
+    countCharactersArray,
   );
 
   /**

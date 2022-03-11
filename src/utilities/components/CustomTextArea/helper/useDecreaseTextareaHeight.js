@@ -5,13 +5,13 @@ export const useDecreaseTextareaHeight = (
   pressedKeysAndMeasure,
   setTextareaHeight,
   textareaHeight,
-  charactersArray,
+  countCharactersArray,
 ) => {
   const { keyPress, liveRows, liveHeight, rowValue } = pressedKeysAndMeasure;
 
   // const rowHeight = 15;
   // const textRows = Math.ceil(liveHeight / rowHeight) - 1;
-  const { lastLine, firstLine } = countCharacters(charactersArray);
+  const { lastLine, firstLine } = countCharacters(countCharactersArray);
 
   /**
    * Effects

@@ -8,7 +8,7 @@ export const useControlDimensions = (
   textareaHeight,
   setTextareaWidth,
   textareaWidth,
-  charactersArray,
+  countCharactersArray,
 ) => {
   /**
    * Custom Hooks
@@ -18,7 +18,7 @@ export const useControlDimensions = (
     pressedKeysAndMeasure,
     setTextareaWidth,
     textareaWidth,
-    charactersArray,
+    countCharactersArray,
   );
 
   useControlTextareaHeight(
@@ -30,6 +30,6 @@ export const useControlDimensions = (
     pressedKeysAndMeasure,
     setTextareaHeight,
     textareaHeight,
-    charactersArray,
+    countCharactersArray,
   );
 };
