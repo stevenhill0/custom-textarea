@@ -1,23 +1,27 @@
 import { combineLinesCharacters } from './combineLinesCharacters';
+import { useState, useEffect } from 'react';
 
 export const useActiveLine = (
   keyPress,
   pressedKey,
   filteredLinesArray,
-  typedOutCharacters,
+  filteredCharacters,
 ) => {
   const combinedLinesCharacters = combineLinesCharacters(
     filteredLinesArray,
-    typedOutCharacters,
+    filteredCharacters,
   );
 
-  let activeLine = typedOutCharacters - combinedLinesCharacters;
+  let activeLine = filteredCharacters - combinedLinesCharacters;
 
+  console.log(activeLine);
+
+  return activeLine;
   //   if (keyPress === 'Enter' && activeLine > 0) {
   //     activeLine = 0;
 
   //     return activeLine;
   //   }
 
-  return activeLine;
+  //   return activeLine;
 };

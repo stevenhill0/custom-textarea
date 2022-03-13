@@ -5,6 +5,7 @@ import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
 import { findLargestLine } from './findLargestLine';
 import { useFilteredLinesArray } from './useFilteredLinesArray';
+import { useFilteredCharacters } from './useFilteredCharacters';
 import { useState } from 'react';
 
 export const useAutoWidth = (
@@ -44,8 +45,11 @@ export const useAutoWidth = (
   /**
    * Custom Hooks
    */
-  console.log(typedOutCharacters);
-  console.log(countCharactersArray);
+
+  const filteredCharacters = useFilteredCharacters(
+    pressedKey,
+    typedOutCharacters,
+  );
 
   useCreateLinesArray(keyPress, lastLine, setLinesArray);
   useFilteredLinesArray(keyPress, firstLine, linesArray, setFilteredLinesArray);
@@ -54,9 +58,10 @@ export const useAutoWidth = (
     keyPress,
     pressedKey,
     filteredLinesArray,
-    typedOutCharacters,
+    filteredCharacters,
   );
 
+  // console.log(activeLine);
   /**
    * Logic
    */
