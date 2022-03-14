@@ -23,11 +23,12 @@ export const useDecreaseTextareaWidth = (
 
   useEffect(() => {
     if (
-      keyPress === 'Backspace' &&
-      liveWidth > minLiveWidth &&
-      activeLine * 7 + 33 < maxLiveWidth && //* 7 + 33 is to balance the numbers between activeLine and maxLiveWidth
-      activeLine > firstLine &&
-      activeLine > largestLine
+      (keyPress === 'Backspace' &&
+        liveWidth > minLiveWidth &&
+        activeLine * 7 + 33 < maxLiveWidth) || //* 7 + 33 is to balance the numbers between activeLine and maxLiveWidth
+      (keyPress === 'Backspace' &&
+        activeLine > firstLine &&
+        activeLine > largestLine)
       // activeLine + largestLine > firstLine
     ) {
       setTextareaWidth((preValue) => {
