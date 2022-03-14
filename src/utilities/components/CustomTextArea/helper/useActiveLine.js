@@ -1,9 +1,5 @@
-import { combineLinesCharacters } from './combineLinesCharacters';
-import { useCountCharacters } from './useCountCharacters';
-import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
+import { useCombineLinesCharacters } from './useCombineLinesCharacters';
 import { useFilteredCharacters } from './useFilteredCharacters';
-
-import { useState, useEffect } from 'react';
 
 export const useActiveLine = (
   keyPress,
@@ -11,22 +7,15 @@ export const useActiveLine = (
   typedOutCharacters,
   countCharactersArray,
 ) => {
-  const { firstLine, lastLine } = useCountCharacters(countCharactersArray);
-
   const filteredCharacters = useFilteredCharacters(
     pressedKey,
     typedOutCharacters,
   );
 
-  const filteredLinesArray = useCreateFilteredLinesArray(
+  const combinedLinesCharacters = useCombineLinesCharacters(
     keyPress,
-    firstLine,
-    lastLine,
-  );
-
-  const combinedLinesCharacters = combineLinesCharacters(
-    filteredLinesArray,
     filteredCharacters,
+    countCharactersArray,
   );
 
   let activeLine = filteredCharacters - combinedLinesCharacters;

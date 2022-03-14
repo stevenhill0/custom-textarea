@@ -3,7 +3,6 @@ import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
 import { useFindLargestLine } from './useFindLargestLine';
-// import { useFilteredCharacters } from './useFilteredCharacters';
 import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 
 export const useAutoWidth = (
@@ -42,11 +41,6 @@ export const useAutoWidth = (
 
   const { firstLine } = useCountCharacters(countCharactersArray);
 
-  // const filteredCharacters = useFilteredCharacters(
-  //   pressedKey,
-  //   typedOutCharacters,
-  // );
-
   const activeLine = useActiveLine(
     keyPress,
     pressedKey,
@@ -55,6 +49,7 @@ export const useAutoWidth = (
   );
 
   const largestLine = useFindLargestLine(keyPress, countCharactersArray);
+
   const countedBackspaces = useCountBackspaceKeys(
     pressedKey,
     typedOutCharacters,
