@@ -1,4 +1,4 @@
-export const countCharacters = (countCharactersArray) => {
+export const useCountCharacters = (countCharactersArray) => {
   /**
    * Logic
    */

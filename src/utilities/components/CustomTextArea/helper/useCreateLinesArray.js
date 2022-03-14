@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useCreateLinesArray = (keyPress, lastLine) => {
   const [linesArray, setLinesArray] = useState([]);
+
   /**
    * Effects
    */

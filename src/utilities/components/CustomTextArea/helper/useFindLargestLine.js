@@ -1,4 +1,4 @@
-export const findLargestLine = (linesArray) => {
+export const useFindLargestLine = (linesArray) => {
   /**
    * Logic
    */

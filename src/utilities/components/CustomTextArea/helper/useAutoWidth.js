@@ -1,12 +1,10 @@
-import { countCharacters } from './countCharacters';
-import { useCreateLinesArray } from './useCreateLinesArray';
+import { useCountCharacters } from './useCountCharacters';
 import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
-import { findLargestLine } from './findLargestLine';
+import { useFindLargestLine } from './useFindLargestLine';
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 import { useFilteredCharacters } from './useFilteredCharacters';
-import { useState } from 'react';
 import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 
 export const useAutoWidth = (
@@ -16,7 +14,6 @@ export const useAutoWidth = (
   countCharactersArray,
 ) => {
   const { liveWidth, keyPress, typedOutCharacters } = pressedKeysAndMeasure;
-  const { firstLine, lastLine } = countCharacters(countCharactersArray);
 
   /**
    *  Prep Logic
@@ -44,16 +41,17 @@ export const useAutoWidth = (
    * Custom Hooks
    */
 
+  const { firstLine, lastLine } = useCountCharacters(countCharactersArray);
+
   const filteredCharacters = useFilteredCharacters(
     pressedKey,
     typedOutCharacters,
   );
 
-  const linesArray = useCreateLinesArray(keyPress, lastLine);
   const filteredLinesArray = useCreateFilteredLinesArray(
     keyPress,
     firstLine,
-    linesArray,
+    lastLine,
   );
 
   const activeLine = useActiveLine(
@@ -63,14 +61,17 @@ export const useAutoWidth = (
     filteredCharacters,
   );
 
+  const largestLine = useFindLargestLine(filteredLinesArray);
+  const countedBackspaces = useCountBackspaceKeys(
+    pressedKey,
+    typedOutCharacters,
+  );
+
   /**
    * Logic
    */
-  const help = useCountBackspaceKeys(pressedKey, typedOutCharacters);
-  console.log('useCountBackspaceKeys' + help);
-  const largestLine = findLargestLine(filteredLinesArray);
+  console.log('useCountBackspaceKeys' + countedBackspaces);
 
-  // console.log('linesArray: ' + linesArray);
   // console.log('linesCount: ' + linesCount);
   // console.log(' typedOutCharacters: ' +  typedOutCharacters);
   // console.log('combinedCharacters: ' + combinedCharacters);
