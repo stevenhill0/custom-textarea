@@ -1,3 +1,8 @@
+import { useActiveLine } from './useActiveLine';
+import { useCountCharacters } from './useCountCharacters';
+import { useFindLargestLine } from './useFindLargestLine';
+import { useCheckKeys } from './useCheckKeys';
+
 import { useEffect } from 'react';
 
 export const useDecreaseTextareaWidth = (
@@ -5,14 +10,25 @@ export const useDecreaseTextareaWidth = (
   textareaWidth,
   setTextareaWidth,
   keyPress,
-  activeLine,
-  largestLine,
-  firstLine,
   typedOutCharacters,
   countCharactersArray,
 ) => {
   /**
-   * Logic
+   * Custom hooks
+   */
+  const pressedKey = useCheckKeys(keyPress);
+
+  const activeLine = useActiveLine(
+    keyPress,
+    pressedKey,
+    typedOutCharacters,
+    countCharactersArray,
+  );
+  const largestLine = useFindLargestLine(keyPress, countCharactersArray);
+  const { firstLine } = useCountCharacters(countCharactersArray);
+
+  /**
+   * Effects
    */
 
   // const maxLength = 7.41;

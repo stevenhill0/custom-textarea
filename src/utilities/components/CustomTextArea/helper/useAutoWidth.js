@@ -4,6 +4,7 @@ import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
 import { useFindLargestLine } from './useFindLargestLine';
 import { useCountBackspaceKeys } from './useCountBackspaceKeys';
+import { useCheckKeys } from './useCheckKeys';
 
 export const useAutoWidth = (
   pressedKeysAndMeasure,
@@ -14,31 +15,10 @@ export const useAutoWidth = (
   const { liveWidth, keyPress, typedOutCharacters } = pressedKeysAndMeasure;
 
   /**
-   *  Prep Logic
-   */
-
-  const keyCheck = [
-    'Enter',
-    'Backspace',
-    'ArrowUp',
-    'ArrowDown',
-    'ArrowLeft',
-    'ArrowRight',
-    'Escape',
-    'Control',
-    'Shift',
-    '(space)',
-    'F12',
-  ];
-  const keyArray = keyCheck.filter((key) => {
-    return key === keyPress;
-  });
-  const pressedKey = keyArray.toString();
-
-  /**
    * Custom Hooks
    */
 
+  const pressedKey = useCheckKeys(keyPress);
   const { firstLine } = useCountCharacters(countCharactersArray);
 
   const activeLine = useActiveLine(
@@ -49,16 +29,12 @@ export const useAutoWidth = (
   );
 
   const largestLine = useFindLargestLine(keyPress, countCharactersArray);
-
-  const countedBackspaces = useCountBackspaceKeys(
-    pressedKey,
-    typedOutCharacters,
-  );
+  const countedBackspaces = useCountBackspaceKeys(keyPress, typedOutCharacters);
 
   /**
    * Logic
    */
-  console.log('useCountBackspaceKeys' + countedBackspaces);
+  console.log('useCountBackspaceKeys: ' + countedBackspaces);
 
   // console.log('linesCount: ' + linesCount);
   // console.log(' typedOutCharacters: ' +  typedOutCharacters);
@@ -83,9 +59,6 @@ export const useAutoWidth = (
     textareaWidth,
     setTextareaWidth,
     keyPress,
-    activeLine,
-    largestLine,
-    firstLine,
     typedOutCharacters,
     countCharactersArray,
   );
