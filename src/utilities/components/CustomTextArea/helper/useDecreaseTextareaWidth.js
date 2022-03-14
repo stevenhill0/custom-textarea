@@ -15,8 +15,8 @@ export const useDecreaseTextareaWidth = (
    * Logic
    */
 
-  const maxLength = 7.41;
-  const textRows = Math.floor(liveWidth / maxLength - 1);
+  // const maxLength = 7.41;
+  // const textRows = Math.floor(liveWidth / maxLength - 1);
 
   const minLiveWidth = 36;
   const maxLiveWidth = 600;
@@ -26,8 +26,8 @@ export const useDecreaseTextareaWidth = (
       keyPress === 'Backspace' &&
       liveWidth > minLiveWidth &&
       activeLine * 7 + 33 < maxLiveWidth && //* 7 + 33 is to balance the numbers between activeLine and maxLiveWidth
-      activeLine > firstLine
-      // activeLine > largestLine &&
+      activeLine > firstLine &&
+      activeLine > largestLine
       // activeLine + largestLine > firstLine
     ) {
       setTextareaWidth((preValue) => {
@@ -46,9 +46,10 @@ export const useDecreaseTextareaWidth = (
   // console.log('liveWidth: ' + liveWidth);
   // console.log('textRows: ' + textRows);
   // console.log('textareaWidth: ' + textareaWidth);
-  // console.log('firstLine: ' + firstLine);
-  // console.log('largestLine: ' + largestLine);
-  // console.log('activeLine: ' + activeLine);
+  console.log('firstLine: ' + firstLine);
+  console.log('largestLine: ' + largestLine);
+  console.log('activeLine: ' + activeLine);
+  console.log('activeLine: ' + activeLine);
   // console.log(' typedOutCharacters: ' +  typedOutCharacters);
   // console.log('countCharactersArray,: ' + countCharactersArray);
 };

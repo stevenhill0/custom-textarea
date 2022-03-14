@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useFilteredLinesArray = (
+export const useCreateFilteredLinesArray = (
   keyPress,
   firstLine,
   linesArray,
-  setFilteredLinesArray,
 ) => {
+  const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
   /**
    * Effects
    */
@@ -20,4 +20,6 @@ export const useFilteredLinesArray = (
       setFilteredLinesArray(newArray);
     }
   }, [keyPress, linesArray, firstLine, setFilteredLinesArray]);
+
+  return filteredLinesArray;
 };

@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useCreateLinesArray = (keyPress, lastLine, setLinesArray) => {
+export const useCreateLinesArray = (keyPress, lastLine) => {
+  const [linesArray, setLinesArray] = useState([]);
   /**
    * Effects
    */
@@ -12,4 +13,6 @@ export const useCreateLinesArray = (keyPress, lastLine, setLinesArray) => {
       });
     }
   }, [keyPress, lastLine, setLinesArray]);
+
+  return linesArray;
 };

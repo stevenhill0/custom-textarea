@@ -4,9 +4,10 @@ import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
 import { findLargestLine } from './findLargestLine';
-import { useFilteredLinesArray } from './useFilteredLinesArray';
+import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 import { useFilteredCharacters } from './useFilteredCharacters';
 import { useState } from 'react';
+import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 
 export const useAutoWidth = (
   pressedKeysAndMeasure,
@@ -14,14 +15,11 @@ export const useAutoWidth = (
   textareaWidth,
   countCharactersArray,
 ) => {
-  const [linesArray, setLinesArray] = useState([]);
-  const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
-
   const { liveWidth, keyPress, typedOutCharacters } = pressedKeysAndMeasure;
   const { firstLine, lastLine } = countCharacters(countCharactersArray);
 
   /**
-   *  Logic
+   *  Prep Logic
    */
 
   const keyCheck = [
@@ -51,8 +49,12 @@ export const useAutoWidth = (
     typedOutCharacters,
   );
 
-  useCreateLinesArray(keyPress, lastLine, setLinesArray);
-  useFilteredLinesArray(keyPress, firstLine, linesArray, setFilteredLinesArray);
+  const linesArray = useCreateLinesArray(keyPress, lastLine);
+  const filteredLinesArray = useCreateFilteredLinesArray(
+    keyPress,
+    firstLine,
+    linesArray,
+  );
 
   const activeLine = useActiveLine(
     keyPress,
@@ -61,11 +63,11 @@ export const useAutoWidth = (
     filteredCharacters,
   );
 
-  // console.log(activeLine);
   /**
    * Logic
    */
-
+  const help = useCountBackspaceKeys(pressedKey, typedOutCharacters);
+  console.log('useCountBackspaceKeys' + help);
   const largestLine = findLargestLine(filteredLinesArray);
 
   // console.log('linesArray: ' + linesArray);
@@ -76,6 +78,7 @@ export const useAutoWidth = (
   // console.log('largestLine: ' + largestLine);
   // console.log('activeLine: ' + activeLine);
   // console.log('firstLine: ' + firstLine);
+
   // console.log(keyPress);
   // console.log(combinedCharacters);
 
