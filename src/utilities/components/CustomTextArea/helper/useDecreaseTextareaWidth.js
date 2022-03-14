@@ -16,8 +16,8 @@ export const useDecreaseTextareaWidth = (
   /**
    * Custom hooks
    */
-  const pressedKey = useCheckKeys(keyPress);
 
+  const pressedKey = useCheckKeys(keyPress);
   const activeLine = useActiveLine(
     keyPress,
     pressedKey,

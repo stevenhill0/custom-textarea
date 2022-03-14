@@ -34,6 +34,7 @@ export const useAutoWidth = (
   /**
    * Logic
    */
+
   console.log('useCountBackspaceKeys: ' + countedBackspaces);
 
   // console.log('linesCount: ' + linesCount);
