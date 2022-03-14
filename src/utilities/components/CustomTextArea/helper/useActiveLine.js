@@ -11,10 +11,8 @@ export const useActiveLine = (
     pressedKey,
     typedOutCharacters,
   );
-
   const combinedLinesCharacters = useCombineLinesCharacters(
     keyPress,
-    filteredCharacters,
     countCharactersArray,
   );
 
