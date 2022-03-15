@@ -1,11 +1,12 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
 import { useControlDimensions } from './helper/useControlDimensions';
+import { useCountCharactersArray } from './helper/useCountCharactersArray';
+
 import { useState } from 'react';
 
 export const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
   const [textareaWidth, setTextareaWidth] = useState(1);
-  const [countCharactersArray, setCountCharactersArray] = useState([]);
   const [pressedKeysAndMeasure, setPressedKeysAndMeasure] = useState({
     keyPress: null,
     liveHeight: 0,
@@ -25,19 +26,16 @@ export const CustomTextarea = () => {
       liveWidth: event.target.scrollWidth,
       liveRows: event.target.rows,
       typedOutCharacters: event.target.value.length + 1, // +1 cos length is 0-based
+      typedOutCharactersZeroBased: event.target.value.length,
       rowValue: event.target.value,
     });
-
-    if (event.key === 'Enter') {
-      setCountCharactersArray((prevCharacters) => {
-        return [...prevCharacters, event.target.value.length];
-      });
-    }
   };
 
   /**
    * Custom Hooks
    */
+
+  const countCharactersArray = useCountCharactersArray(pressedKeysAndMeasure);
 
   useControlDimensions(
     pressedKeysAndMeasure,
