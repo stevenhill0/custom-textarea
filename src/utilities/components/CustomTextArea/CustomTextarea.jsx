@@ -1,6 +1,5 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
 import { useControlDimensions } from './helper/useControlDimensions';
-import { useCountCharactersArray } from './helper/useCountCharactersArray';
 
 import { useState } from 'react';
 
@@ -13,6 +12,8 @@ export const CustomTextarea = () => {
     liveWidth: 0,
     liveRows: 0,
     typedOutCharacters: 0,
+    typedOutCharactersZeroBased: 0,
+    rowValue: null,
   });
 
   /**
@@ -34,8 +35,6 @@ export const CustomTextarea = () => {
   /**
    * Custom Hooks
    */
-
-  const countCharactersArray = useCountCharactersArray(pressedKeysAndMeasure);
 
   useControlDimensions(
     pressedKeysAndMeasure,

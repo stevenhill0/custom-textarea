@@ -17,6 +17,7 @@ export const useAutoWidth = (
   /**
    * Custom Hooks
    */
+
   const countCharactersArray = useCountCharactersArray(pressedKeysAndMeasure);
 
   const pressedKey = useCheckKeys(keyPress);
