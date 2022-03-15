@@ -1,5 +1,6 @@
-import React from 'react';
+export const useCompareLongestLineToMaxWidth = (liveWidth, longestLine) => {
+  const difference = liveWidth - longestLine;
+  const result = difference + longestLine;
 
-export const useCompareLongestLineToMaxWidth = (liveWidth) => {
-  return <div>useCompareLongestLineToMaxWidth</div>;
+  return result;
 };

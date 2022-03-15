@@ -3,7 +3,6 @@ import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
 import { useFindLongestLine } from './useFindLongestLine';
-import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 import { useCheckKeys } from './useCheckKeys';
 import { useCountCharactersArray } from './useCountCharactersArray';
 
@@ -31,7 +30,6 @@ export const useAutoWidth = (
   );
 
   const largestLine = useFindLongestLine(keyPress, countCharactersArray);
-  const countedBackspaces = useCountBackspaceKeys(keyPress, typedOutCharacters);
 
   /**
    * Logic
