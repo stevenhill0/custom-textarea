@@ -10,10 +10,10 @@ export const CustomTextarea = () => {
     keyPress: null,
     liveHeight: 0,
     liveWidth: 0,
-    liveRows: 0,
+    liveRowCount: 0,
+    rowValue: null,
     typedOutCharacters: 0,
     typedOutCharactersZeroBased: 0,
-    rowValue: null,
   });
 
   /**
@@ -25,10 +25,10 @@ export const CustomTextarea = () => {
       keyPress: event.key,
       liveHeight: event.target.scrollHeight,
       liveWidth: event.target.scrollWidth,
-      liveRows: event.target.rows,
+      liveRowCount: event.target.rows,
+      rowValue: event.target.value,
       typedOutCharacters: event.target.value.length + 1, // +1 cos length is 0-based
       typedOutCharactersZeroBased: event.target.value.length,
-      rowValue: event.target.value,
     });
   };
 

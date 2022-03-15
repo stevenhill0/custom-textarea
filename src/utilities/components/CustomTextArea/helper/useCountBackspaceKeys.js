@@ -5,6 +5,10 @@ import { useCheckKeys } from './useCheckKeys';
 export const useCountBackspaceKeys = (keyPress, typedOutCharacters) => {
   const [countBackspaceKeys, setCountBackspaceKeys] = useState(0);
 
+  /**
+   * Custom Hooks
+   */
+
   const pressedKey = useCheckKeys(keyPress);
   // const activeLine = useActiveLine(filteredLinesArray, filteredCharacters);
 

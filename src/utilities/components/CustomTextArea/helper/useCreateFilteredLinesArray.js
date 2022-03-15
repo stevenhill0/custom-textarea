@@ -1,9 +1,12 @@
 import { useCreateLinesArray } from './useCreateLinesArray';
-
 import { useState, useEffect } from 'react';
 
 export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
   const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
+
+  /**
+   * Custom Hooks
+   */
 
   const linesArray = useCreateLinesArray(keyPress, lastLine);
 

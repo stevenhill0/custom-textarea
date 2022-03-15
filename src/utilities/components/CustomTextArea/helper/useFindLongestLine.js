@@ -1,7 +1,11 @@
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 import { useCountCharacters } from './useCountCharacters';
 
-export const useFindLargestLine = (keyPress, countCharactersArray) => {
+export const useFindLongestLine = (keyPress, countCharactersArray) => {
+  /**
+   * Custom Hooks
+   */
+
   const { firstLine, lastLine } = useCountCharacters(countCharactersArray);
   const filteredLinesArray = useCreateFilteredLinesArray(
     keyPress,
@@ -13,9 +17,9 @@ export const useFindLargestLine = (keyPress, countCharactersArray) => {
    * Logic
    */
 
-  const largestLine = filteredLinesArray.reduce((previousLine, currentLine) => {
+  const longestLine = filteredLinesArray.reduce((previousLine, currentLine) => {
     return previousLine > currentLine ? previousLine : currentLine;
   });
 
-  return largestLine;
+  return longestLine;
 };

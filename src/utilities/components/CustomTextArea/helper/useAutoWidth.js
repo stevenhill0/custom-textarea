@@ -2,7 +2,7 @@ import { useCountCharacters } from './useCountCharacters';
 import { controlTextareaWidth } from './controlTextareaWidth';
 import { useDecreaseTextareaWidth } from './useDecreaseTextareaWidth';
 import { useActiveLine } from './useActiveLine';
-import { useFindLargestLine } from './useFindLargestLine';
+import { useFindLongestLine } from './useFindLongestLine';
 import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 import { useCheckKeys } from './useCheckKeys';
 import { useCountCharactersArray } from './useCountCharactersArray';
@@ -30,14 +30,14 @@ export const useAutoWidth = (
     countCharactersArray,
   );
 
-  const largestLine = useFindLargestLine(keyPress, countCharactersArray);
+  const largestLine = useFindLongestLine(keyPress, countCharactersArray);
   const countedBackspaces = useCountBackspaceKeys(keyPress, typedOutCharacters);
 
   /**
    * Logic
    */
 
-  console.log('useCountBackspaceKeys: ' + countedBackspaces);
+  // console.log('useCountBackspaceKeys: ' + countedBackspaces);
 
   // console.log('linesCount: ' + linesCount);
   // console.log(' typedOutCharacters: ' +  typedOutCharacters);
@@ -58,11 +58,9 @@ export const useAutoWidth = (
   }
 
   useDecreaseTextareaWidth(
-    liveWidth,
+    pressedKeysAndMeasure,
+    countCharactersArray,
     textareaWidth,
     setTextareaWidth,
-    keyPress,
-    typedOutCharacters,
-    countCharactersArray,
   );
 };

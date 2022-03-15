@@ -1,18 +1,18 @@
 import { useActiveLine } from './useActiveLine';
 import { useCountCharacters } from './useCountCharacters';
-import { useFindLargestLine } from './useFindLargestLine';
+import { useFindLongestLine } from './useFindLongestLine';
 import { useCheckKeys } from './useCheckKeys';
-
+import { useDecreaseLongestLine } from './useDecreaseLongestLine';
 import { useEffect } from 'react';
 
 export const useDecreaseTextareaWidth = (
-  liveWidth,
+  pressedKeysAndMeasure,
+  countCharactersArray,
   textareaWidth,
   setTextareaWidth,
-  keyPress,
-  typedOutCharacters,
-  countCharactersArray,
 ) => {
+  const { keyPress, typedOutCharacters, liveWidth } = pressedKeysAndMeasure;
+
   /**
    * Custom hooks
    */
@@ -24,8 +24,10 @@ export const useDecreaseTextareaWidth = (
     typedOutCharacters,
     countCharactersArray,
   );
-  const largestLine = useFindLargestLine(keyPress, countCharactersArray);
+  const largestLine = useFindLongestLine(keyPress, countCharactersArray);
   const { firstLine } = useCountCharacters(countCharactersArray);
+
+  useDecreaseLongestLine(pressedKeysAndMeasure, countCharactersArray);
 
   /**
    * Effects
@@ -63,10 +65,10 @@ export const useDecreaseTextareaWidth = (
   // console.log('liveWidth: ' + liveWidth);
   // console.log('textRows: ' + textRows);
   // console.log('textareaWidth: ' + textareaWidth);
-  console.log('firstLine: ' + firstLine);
-  console.log('largestLine: ' + largestLine);
-  console.log('activeLine: ' + activeLine);
-  console.log('activeLine: ' + activeLine);
+  // console.log('firstLine: ' + firstLine);
+  // console.log('largestLine: ' + largestLine);
+  // console.log('activeLine: ' + activeLine);
+  // console.log('activeLine: ' + activeLine);
   // console.log(' typedOutCharacters: ' +  typedOutCharacters);
   // console.log('countCharactersArray,: ' + countCharactersArray);
 };
