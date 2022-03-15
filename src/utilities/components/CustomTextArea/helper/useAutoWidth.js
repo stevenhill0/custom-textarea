@@ -5,18 +5,19 @@ import { useActiveLine } from './useActiveLine';
 import { useFindLargestLine } from './useFindLargestLine';
 import { useCountBackspaceKeys } from './useCountBackspaceKeys';
 import { useCheckKeys } from './useCheckKeys';
+import { useCountCharactersArray } from './useCountCharactersArray';
 
 export const useAutoWidth = (
   pressedKeysAndMeasure,
   setTextareaWidth,
   textareaWidth,
-  countCharactersArray,
 ) => {
   const { liveWidth, keyPress, typedOutCharacters } = pressedKeysAndMeasure;
 
   /**
    * Custom Hooks
    */
+  const countCharactersArray = useCountCharactersArray(pressedKeysAndMeasure);
 
   const pressedKey = useCheckKeys(keyPress);
   const { firstLine } = useCountCharacters(countCharactersArray);

@@ -43,7 +43,6 @@ export const CustomTextarea = () => {
     textareaHeight,
     setTextareaWidth,
     textareaWidth,
-    countCharactersArray,
   );
 
   /**
