@@ -49,8 +49,9 @@ export const useDecreaseLongestLine = (
     }
   }, [keyPress, longestLine, liveWidth]);
 
-  console.log('decreasedLine: ' + decreasedLine);
-  console.log('longestLine: ' + longestLine);
+  // console.log('decreasedLine: ' + decreasedLine);
+  // console.log('longestLine: ' + longestLine);
+
   // console.log('liveWidth: ' + liveWidth); //liveWidth: starts at 29: adds 7 with every two keyPresses, but every 3rd keypress adds 8
   // console.log('decreasedLongestLine: ' + decreasedLongestLine);
   // return decreasedLongestLine;

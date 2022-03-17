@@ -7,11 +7,12 @@ export const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
   const [textareaWidth, setTextareaWidth] = useState(1);
   const [pressedKeysAndMeasure, setPressedKeysAndMeasure] = useState({
-    keyPress: null,
+    keyPress: '',
+    selectionStart: 0,
     liveHeight: 0,
     liveWidth: 0,
     liveRowCount: 0,
-    rowValue: null,
+    rowValue: '',
     typedOutCharacters: 0,
     typedOutCharactersZeroBased: 0,
   });
@@ -23,6 +24,7 @@ export const CustomTextarea = () => {
   const keyPressData = (event) => {
     setPressedKeysAndMeasure({
       keyPress: event.key,
+      selectionStart: event.target.selectionStart, // +1 cos useState is delayed by render
       liveHeight: event.target.scrollHeight,
       liveWidth: event.target.scrollWidth,
       liveRowCount: event.target.rows,
