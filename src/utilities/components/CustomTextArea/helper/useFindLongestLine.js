@@ -1,12 +1,12 @@
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 import { useCountCharacters } from './useCountCharacters';
 
-export const useFindLongestLine = (keyPress, countCharactersArray) => {
+export const useFindLongestLine = (keyPress, keyDownEventData) => {
   /**
    * Custom Hooks
    */
 
-  const { firstLine, lastLine } = useCountCharacters(countCharactersArray);
+  const { firstLine, lastLine } = useCountCharacters(keyDownEventData);
   const filteredLinesArray = useCreateFilteredLinesArray(
     keyPress,
     firstLine,

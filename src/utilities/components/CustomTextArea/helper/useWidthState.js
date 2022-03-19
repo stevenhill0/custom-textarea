@@ -1,4 +1,3 @@
-import { useCountCharactersArray } from './useCountCharactersArray';
 import { useCountCharacters } from './useCountCharacters';
 import { useCheckKeys } from './useCheckKeys';
 import { useActiveLine } from './useActiveLine';
@@ -9,23 +8,19 @@ import { useState, useEffect } from 'react';
 export const useWidthState = (keyDownEventData) => {
   const [textareaWidth, setTextareaWidth] = useState(1);
 
-  const { liveWidth, keyPress } = keyDownEventData;
+  const { liveWidth, keyPress, selectionStart } = keyDownEventData;
 
   /**
    * Custom Hooks
    */
 
   const pressedKey = useCheckKeys(keyPress);
-  const countCharactersArray = useCountCharactersArray(keyDownEventData);
+
   const { firstLine } = useCountCharacters(keyDownEventData);
 
-  const activeLine = useActiveLine(
-    keyDownEventData,
-    pressedKey,
-    countCharactersArray,
-  );
+  const activeLine = useActiveLine(keyDownEventData, pressedKey);
 
-  const largestLine = useFindLongestLine(keyPress, countCharactersArray);
+  const longestLine = useFindLongestLine(keyPress, keyDownEventData);
 
   /**
    * Logic
@@ -37,7 +32,7 @@ export const useWidthState = (keyDownEventData) => {
 
   if (
     (keyPress !== pressedKey && firstLine === 0) ||
-    (keyPress !== pressedKey && activeLine > largestLine)
+    (keyPress !== pressedKey && activeLine > longestLine)
   ) {
     if (currentWidth > textareaWidth) {
       setTextareaWidth(currentWidth);
@@ -55,8 +50,8 @@ export const useWidthState = (keyDownEventData) => {
         activeLine * 7 + 33 < maxLiveWidth) || //* 7 + 33 is to balance the number difference between activeLine and maxLiveWidth
       (keyPress === 'Backspace' &&
         activeLine > firstLine &&
-        activeLine > largestLine)
-      // activeLine + largestLine > firstLine
+        activeLine > longestLine)
+      // activeLine + longestLine > firstLine
     ) {
       setTextareaWidth((preValue) => {
         return preValue - 1;
@@ -67,7 +62,7 @@ export const useWidthState = (keyDownEventData) => {
     keyPress,
     setTextareaWidth,
     activeLine,
-    largestLine,
+    longestLine,
     firstLine,
   ]);
 

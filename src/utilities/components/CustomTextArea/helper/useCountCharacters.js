@@ -1,4 +1,22 @@
-export const useCountCharacters = (countCharactersArray) => {
+import { useState, useEffect } from 'react';
+
+export const useCountCharacters = (keyDownEventData) => {
+  const [countCharactersArray, setCountCharactersArray] = useState([]);
+
+  const { keyPress, typedOutCharactersZeroBased } = keyDownEventData;
+
+  /**
+   * Effects
+   */
+
+  useEffect(() => {
+    if (keyPress === 'Enter') {
+      setCountCharactersArray((prevCharacters) => {
+        return [...prevCharacters, typedOutCharactersZeroBased];
+      });
+    }
+  }, [keyPress, typedOutCharactersZeroBased]);
+
   /**
    * Logic
    */
