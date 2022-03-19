@@ -1,12 +1,14 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
+import { IncreaseWidth } from './components/IncreaseWidth/IncreaseWidth';
 import { useControlDimensions } from './helper/useControlDimensions';
+import { useWidthState } from './helper/useWidthState';
 
 import { useState } from 'react';
 
 export const CustomTextarea = () => {
   const [textareaHeight, setTextareaHeight] = useState(1);
-  const [textareaWidth, setTextareaWidth] = useState(1);
-  const [pressedKeysAndMeasure, setPressedKeysAndMeasure] = useState({
+  // const [textareaWidth, setTextareaWidth] = useState(1);
+  const [keyDownEventData, setKeyDownEventData] = useState({
     keyPress: '',
     selectionStart: 0,
     liveHeight: 0,
@@ -22,7 +24,7 @@ export const CustomTextarea = () => {
    */
 
   const keyPressData = (event) => {
-    setPressedKeysAndMeasure({
+    setKeyDownEventData({
       keyPress: event.key,
       selectionStart: event.target.selectionStart, // +1 cos useState is delayed by render
       liveHeight: event.target.scrollHeight,
@@ -38,12 +40,14 @@ export const CustomTextarea = () => {
    * Custom Hooks
    */
 
+  const textareaWidth = useWidthState(keyDownEventData);
+
   useControlDimensions(
-    pressedKeysAndMeasure,
+    keyDownEventData,
     setTextareaHeight,
     textareaHeight,
-    setTextareaWidth,
-    textareaWidth,
+    // setTextareaWidth,
+    // textareaWidth,
   );
 
   /**
@@ -52,6 +56,7 @@ export const CustomTextarea = () => {
 
   return (
     <div>
+      <IncreaseWidth keyDownEventData={keyDownEventData} />
       <TextareaView
         controlHeight={textareaHeight}
         controlWidth={textareaWidth}

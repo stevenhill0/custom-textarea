@@ -6,12 +6,10 @@ export const useActiveLine = (
   pressedKey,
   typedOutCharacters,
   countCharactersArray,
-  pressedKeysAndMeasure,
 ) => {
   const filteredCharacters = useFilteredCharacters(
     pressedKey,
     typedOutCharacters,
-    pressedKeysAndMeasure,
   );
   const combinedLinesCharacters = useCombineLinesCharacters(
     keyPress,

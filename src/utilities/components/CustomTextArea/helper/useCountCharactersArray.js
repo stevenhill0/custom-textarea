@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-export const useCountCharactersArray = (pressedKeysAndMeasure) => {
+export const useCountCharactersArray = (keyDownEventData) => {
   const [countCharactersArray, setCountCharactersArray] = useState([]);
 
-  const { keyPress, typedOutCharactersZeroBased } = pressedKeysAndMeasure;
+  const { keyPress, typedOutCharactersZeroBased } = keyDownEventData;
 
   useEffect(() => {
     if (keyPress === 'Enter') {
