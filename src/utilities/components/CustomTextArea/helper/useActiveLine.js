@@ -2,11 +2,12 @@ import { useCombineLinesCharacters } from './useCombineLinesCharacters';
 import { useFilteredCharacters } from './useFilteredCharacters';
 
 export const useActiveLine = (
-  keyPress,
+  keyDownEventData,
   pressedKey,
-  typedOutCharacters,
   countCharactersArray,
 ) => {
+  const { keyPress, typedOutCharacters } = keyDownEventData;
+
   const filteredCharacters = useFilteredCharacters(
     pressedKey,
     typedOutCharacters,
@@ -17,6 +18,6 @@ export const useActiveLine = (
   );
 
   let activeLine = filteredCharacters - combinedLinesCharacters;
-
+  console.log(activeLine);
   return activeLine;
 };

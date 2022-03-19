@@ -1,13 +1,11 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
 import { IncreaseWidth } from './components/IncreaseWidth/IncreaseWidth';
-import { useControlDimensions } from './helper/useControlDimensions';
 import { useWidthState } from './helper/useWidthState';
+import { useHeightState } from './helper/useHeightState';
 
 import { useState } from 'react';
 
 export const CustomTextarea = () => {
-  const [textareaHeight, setTextareaHeight] = useState(1);
-  // const [textareaWidth, setTextareaWidth] = useState(1);
   const [keyDownEventData, setKeyDownEventData] = useState({
     keyPress: '',
     selectionStart: 0,
@@ -41,14 +39,7 @@ export const CustomTextarea = () => {
    */
 
   const textareaWidth = useWidthState(keyDownEventData);
-
-  useControlDimensions(
-    keyDownEventData,
-    setTextareaHeight,
-    textareaHeight,
-    // setTextareaWidth,
-    // textareaWidth,
-  );
+  const textareaHeight = useHeightState(keyDownEventData);
 
   /**
    * Component

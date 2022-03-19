@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 export const useWidthState = (keyDownEventData) => {
   const [textareaWidth, setTextareaWidth] = useState(1);
 
-  const { liveWidth, keyPress, typedOutCharacters } = keyDownEventData;
+  const { liveWidth, keyPress } = keyDownEventData;
 
   /**
    * Custom Hooks
@@ -17,12 +17,11 @@ export const useWidthState = (keyDownEventData) => {
 
   const pressedKey = useCheckKeys(keyPress);
   const countCharactersArray = useCountCharactersArray(keyDownEventData);
-  const { firstLine } = useCountCharacters(countCharactersArray);
+  const { firstLine } = useCountCharacters(keyDownEventData);
 
   const activeLine = useActiveLine(
-    keyPress,
+    keyDownEventData,
     pressedKey,
-    typedOutCharacters,
     countCharactersArray,
   );
 
@@ -53,7 +52,7 @@ export const useWidthState = (keyDownEventData) => {
     if (
       (keyPress === 'Backspace' &&
         liveWidth > minLiveWidth &&
-        activeLine * 7 + 33 < maxLiveWidth) || //* 7 + 33 is to balance the numbers between activeLine and maxLiveWidth
+        activeLine * 7 + 33 < maxLiveWidth) || //* 7 + 33 is to balance the number difference between activeLine and maxLiveWidth
       (keyPress === 'Backspace' &&
         activeLine > firstLine &&
         activeLine > largestLine)
