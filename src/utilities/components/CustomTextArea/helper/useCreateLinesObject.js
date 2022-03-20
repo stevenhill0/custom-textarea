@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
 export const useCreateLinesObject = (keyPress, lastLine) => {
   const reducer = (state, action) => {
@@ -14,11 +14,6 @@ export const useCreateLinesObject = (keyPress, lastLine) => {
     linesArray: [],
     selectionStart: 0,
   });
-
-  // const [linesArray, setLinesArray] = useState({
-  //   linesArray: [],
-  //   selectionStart: 0,
-  // });
 
   /**
    * Effects
