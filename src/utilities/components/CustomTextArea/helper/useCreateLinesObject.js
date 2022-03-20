@@ -1,9 +1,11 @@
 import { useEffect, useReducer } from 'react';
 
+const TYPES = { LINES_ARRAY: 'linesArray', SELECTION_START: ' selectionStart' };
+
 export const useCreateLinesObject = (keyPress, lastLine) => {
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'linesArray':
+      case TYPES.LINES_ARRAY:
         return { ...state, linesArray: [...state.linesArray, lastLine] };
       default:
         return state;
@@ -21,7 +23,7 @@ export const useCreateLinesObject = (keyPress, lastLine) => {
 
   useEffect(() => {
     if (keyPress === 'Enter') {
-      dispatch({ type: 'linesArray' });
+      dispatch({ type: TYPES.LINES_ARRAY });
     }
   }, [keyPress]);
 

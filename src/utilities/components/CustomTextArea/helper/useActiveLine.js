@@ -12,6 +12,6 @@ export const useActiveLine = (keyDownEventData, pressedKey) => {
   const combinedLinesCharacters = useCombineLinesCharacters(keyDownEventData);
 
   let activeLine = filteredCharacters - combinedLinesCharacters;
-
+  console.log(activeLine);
   return activeLine;
 };
