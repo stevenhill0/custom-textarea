@@ -1,10 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 
 export const useCreateLinesObject = (keyPress, lastLine) => {
-  const [linesArray, setLinesArray] = useState({
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'linesArray':
+        return { ...state, linesArray: [...state.linesArray, lastLine] };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, {
     linesArray: [],
     selectionStart: 0,
   });
+
+  // const [linesArray, setLinesArray] = useState({
+  //   linesArray: [],
+  //   selectionStart: 0,
+  // });
 
   /**
    * Effects
@@ -12,14 +26,9 @@ export const useCreateLinesObject = (keyPress, lastLine) => {
 
   useEffect(() => {
     if (keyPress === 'Enter') {
-      setLinesArray((previous) => {
-        return {
-          ...previous,
-          linesArray: [...previous.linesArray, lastLine],
-        };
-      });
+      dispatch({ type: 'linesArray' });
     }
-  }, [keyPress, lastLine, setLinesArray]);
+  }, [keyPress]);
 
-  return linesArray;
+  return state;
 };
