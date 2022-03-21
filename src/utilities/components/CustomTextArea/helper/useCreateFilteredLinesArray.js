@@ -1,4 +1,5 @@
 import { useCreateLinesObject } from './useCreateLinesObject';
+
 import { useState, useEffect } from 'react';
 
 export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {

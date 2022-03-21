@@ -1,11 +1,16 @@
 import { useWidthState } from '../../helper/useWidthState';
+import { EventDataContext } from '../../helper/EventDataContext';
 
-export const IncreaseWidth = ({ keyDownEventData }) => {
+import { useContext } from 'react';
+
+export const IncreaseWidth = () => {
+  const value = useContext(EventDataContext);
+
   /**
    * Custom Hooks
    */
 
-  useWidthState(keyDownEventData);
+  useWidthState(value);
 
   return null;
 };

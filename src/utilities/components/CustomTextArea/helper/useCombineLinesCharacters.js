@@ -1,8 +1,10 @@
 import { useCountCharacters } from './useCountCharacters';
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
+import { EventDataContext } from './EventDataContext';
 
 export const useCombineLinesCharacters = (keyDownEventData) => {
   const { keyPress } = keyDownEventData;
+
   /**
    * Custom Hooks
    */
