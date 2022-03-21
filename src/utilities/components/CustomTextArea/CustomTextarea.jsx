@@ -1,5 +1,5 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
-import { IncreaseWidth } from './components/IncreaseWidth/IncreaseWidth';
+import { PassKeydownEventData } from './components/IncreaseWidth/PassKeydownEventData';
 import { useWidthState } from './helper/useWidthState';
 import { useHeightState } from './helper/useHeightState';
 import { EventDataContext } from './helper/EventDataContext';
@@ -91,7 +91,7 @@ export const CustomTextarea = () => {
   return (
     <EventDataContext.Provider value={keyDownEventData}>
       <div>
-        <IncreaseWidth />
+        <PassKeydownEventData />
         <TextareaView
           controlHeight={textareaHeight}
           controlWidth={textareaWidth}

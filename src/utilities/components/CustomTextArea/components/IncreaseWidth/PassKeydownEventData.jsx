@@ -3,7 +3,7 @@ import { EventDataContext } from '../../helper/EventDataContext';
 
 import { useContext } from 'react';
 
-export const IncreaseWidth = () => {
+export const PassKeydownEventData = () => {
   const value = useContext(EventDataContext);
 
   /**
