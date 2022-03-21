@@ -8,7 +8,7 @@ export const useCreateLinesObject = (lastLine) => {
   const value = useContext(EventDataContext);
   const { selectionStart, liveWidth, keyPress } = value;
 
-  console.log(keyPress);
+  console.log(liveWidth);
 
   const reducer = (state, action) => {
     switch (action.type) {
