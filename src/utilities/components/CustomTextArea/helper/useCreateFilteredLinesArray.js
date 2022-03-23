@@ -18,8 +18,8 @@ export const useCreateFilteredLinesArray = () => {
    * Custom Hooks
    */
 
-  const { firstLine, lastLine } = useCountCharacters();
-  const linesObject = useCreateLinesObject(keyPress, lastLine);
+  const { firstLine } = useCountCharacters();
+  const linesObject = useCreateLinesObject();
   const { linesArray } = linesObject;
 
   /**

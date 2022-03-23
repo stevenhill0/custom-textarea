@@ -1,16 +1,21 @@
+import { useCountCharacters } from './useCountCharacters';
 import { EventDataContext } from './EventDataContext';
 
 import { useEffect, useReducer, useContext } from 'react';
 
 const TYPES = { LINES_ARRAY: 'linesArray', SELECTION_START: ' selectionStart' };
 
-export const useCreateLinesObject = (keyPress, lastLine) => {
+export const useCreateLinesObject = () => {
+  ///Custom Hooks
+
+  const { lastLine } = useCountCharacters();
+
   /**
    * React Hooks
    */
 
   const keyDownEventData = useContext(EventDataContext);
-  const { selectionStart, liveWidth } = keyDownEventData;
+  const { keyPress, selectionStart, liveWidth } = keyDownEventData;
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -41,6 +46,7 @@ export const useCreateLinesObject = (keyPress, lastLine) => {
   /**
    * Returned Value
    */
+
   // console.log('linesArray:' + state.linesArray);
   // console.log('selectionStart: ' + state.selectionStart);
   // console.log(' lastLine: ' + lastLine);
