@@ -1,11 +1,11 @@
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 
-export const useFindLongestLine = (keyPress) => {
+export const useFindLongestLine = () => {
   /**
    * Custom Hooks
    */
 
-  const filteredLinesArray = useCreateFilteredLinesArray(keyPress);
+  const filteredLinesArray = useCreateFilteredLinesArray();
 
   /**
    * Logic
