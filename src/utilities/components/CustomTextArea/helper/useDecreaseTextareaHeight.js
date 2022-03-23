@@ -1,5 +1,4 @@
 import { useCountCharacters } from './useCountCharacters';
-import { useCountCharactersArray } from './useCountCharactersArray';
 
 import { useEffect } from 'react';
 
@@ -9,11 +8,10 @@ export const useDecreaseTextareaHeight = (
   textareaHeight,
 ) => {
   const { keyPress, liveRows, liveHeight, rowValue } = pressedKeysAndMeasure;
-  const countCharactersArray = useCountCharactersArray(pressedKeysAndMeasure);
 
   // const rowHeight = 15;
   // const textRows = Math.ceil(liveHeight / rowHeight) - 1;
-  const { lastLine, firstLine } = useCountCharacters(countCharactersArray);
+  const { lastLine, firstLine } = useCountCharacters();
 
   /**
    * Effects

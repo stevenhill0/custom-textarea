@@ -6,7 +6,7 @@ export const useFindLongestLine = (keyPress, keyDownEventData) => {
    * Custom Hooks
    */
 
-  const { firstLine, lastLine } = useCountCharacters(keyDownEventData);
+  const { firstLine, lastLine } = useCountCharacters();
   const filteredLinesArray = useCreateFilteredLinesArray(
     keyPress,
     firstLine,

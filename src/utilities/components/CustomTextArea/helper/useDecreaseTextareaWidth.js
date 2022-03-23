@@ -25,7 +25,7 @@ export const useDecreaseTextareaWidth = (
     countCharactersArray,
   );
   const largestLine = useFindLongestLine(keyPress, countCharactersArray);
-  const { firstLine } = useCountCharacters(countCharactersArray);
+  const { firstLine } = useCountCharacters();
 
   useDecreaseLongestLine(pressedKeysAndMeasure, countCharactersArray);
 

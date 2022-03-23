@@ -2,7 +2,7 @@ import { TextareaView } from './components/TextareaView/TextareaView';
 import { PassKeyDownEventData } from './components/IncreaseWidth/PassKeyDownEventData';
 import { EventDataContext } from './helper/EventDataContext';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 
 export const CustomTextarea = () => {
   /**

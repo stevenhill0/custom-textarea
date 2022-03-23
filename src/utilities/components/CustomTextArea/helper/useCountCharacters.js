@@ -1,11 +1,14 @@
-import { useState, useEffect } from 'react';
+import { EventDataContext } from './EventDataContext';
 
-export const useCountCharacters = (keyDownEventData) => {
-  const { keyPress, typedOutCharactersZeroBased } = keyDownEventData;
+import { useState, useEffect, useContext } from 'react';
 
+export const useCountCharacters = () => {
   /**
    * React Hooks
    */
+
+  const keyDownEventData = useContext(EventDataContext);
+  const { keyPress, typedOutCharactersZeroBased } = keyDownEventData;
 
   const [countCharactersArray, setCountCharactersArray] = useState([]);
 

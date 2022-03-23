@@ -23,7 +23,7 @@ export const useDecreaseLongestLine = (
     liveWidth,
     longestLine,
   );
-  const { firstLine, lastLine } = useCountCharacters(countCharactersArray);
+  const { firstLine, lastLine } = useCountCharacters();
   const filteredLinesArray = useCreateFilteredLinesArray(
     keyPress,
     firstLine,
