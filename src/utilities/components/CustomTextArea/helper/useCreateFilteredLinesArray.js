@@ -1,8 +1,9 @@
 import { useCreateLinesObject } from './useCreateLinesObject';
+import { useCountCharacters } from './useCountCharacters';
 
 import { useState, useEffect } from 'react';
 
-export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
+export const useCreateFilteredLinesArray = (keyPress) => {
   /**
    * React Hooks
    */
@@ -13,6 +14,7 @@ export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
    * Custom Hooks
    */
 
+  const { firstLine, lastLine } = useCountCharacters();
   const linesObject = useCreateLinesObject(keyPress, lastLine);
   const { linesArray } = linesObject;
 

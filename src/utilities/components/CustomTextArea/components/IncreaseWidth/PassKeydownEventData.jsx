@@ -8,13 +8,13 @@ export const PassKeyDownEventData = () => {
    * React Hooks
    */
 
-  const value = useContext(EventDataContext);
+  const keyDownEventData = useContext(EventDataContext);
 
   /**
    * Custom Hooks
    */
 
-  useWidthState(value);
+  useWidthState(keyDownEventData);
 
   /**
    * Returned Value

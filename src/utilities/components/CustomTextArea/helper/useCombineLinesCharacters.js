@@ -1,4 +1,3 @@
-import { useCountCharacters } from './useCountCharacters';
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
 
 export const useCombineLinesCharacters = (keyDownEventData) => {
@@ -8,12 +7,7 @@ export const useCombineLinesCharacters = (keyDownEventData) => {
    * Custom Hooks
    */
 
-  const { firstLine, lastLine } = useCountCharacters();
-  const filteredLinesArray = useCreateFilteredLinesArray(
-    keyPress,
-    firstLine,
-    lastLine,
-  );
+  const filteredLinesArray = useCreateFilteredLinesArray(keyPress);
 
   /**
    * Logic

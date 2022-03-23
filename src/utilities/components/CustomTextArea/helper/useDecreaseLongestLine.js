@@ -1,34 +1,26 @@
 import { useCreateFilteredLinesArray } from './useCreateFilteredLinesArray';
-import { useCountCharacters } from './useCountCharacters';
 import { useFindLongestLine } from './useFindLongestLine';
 import { useCompareLongestLineToMaxWidth } from './useCompareLongestLineToMaxWidth';
 
 import { useState, useEffect } from 'react';
 
-export const useDecreaseLongestLine = (
-  pressedKeysAndMeasure,
-  countCharactersArray,
-) => {
+export const useDecreaseLongestLine = (keyDownEventData) => {
   const [decreasedLine, setDecreasedLine] = useState(0);
 
-  const { keyPress, liveWidth } = pressedKeysAndMeasure;
+  const { keyPress, liveWidth } = keyDownEventData;
 
   /**
    * Custom Hooks
    */
 
-  const longestLine = useFindLongestLine(keyPress, countCharactersArray);
+  const longestLine = useFindLongestLine(keyPress);
 
   const longestLineAtMaxWidth = useCompareLongestLineToMaxWidth(
     liveWidth,
     longestLine,
   );
-  const { firstLine, lastLine } = useCountCharacters();
-  const filteredLinesArray = useCreateFilteredLinesArray(
-    keyPress,
-    firstLine,
-    lastLine,
-  );
+
+  const filteredLinesArray = useCreateFilteredLinesArray(keyPress);
 
   /**
    * Logic
