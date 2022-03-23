@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
 export const useCountCharacters = (keyDownEventData) => {
-  const [countCharactersArray, setCountCharactersArray] = useState([]);
-
   const { keyPress, typedOutCharactersZeroBased } = keyDownEventData;
 
   /**
-   * Effects
+   * React Hooks
    */
+
+  const [countCharactersArray, setCountCharactersArray] = useState([]);
 
   useEffect(() => {
     if (keyPress === 'Enter') {
@@ -27,6 +27,10 @@ export const useCountCharacters = (keyDownEventData) => {
   const lastLine = lastNumber - secondLast - 1;
 
   const lines = { firstLine, lastLine };
+
+  /**
+   * Returned Value
+   */
 
   return lines;
 };

@@ -1,4 +1,8 @@
 export const useCheckKeys = (keyPress) => {
+  /**
+   * Logic
+   */
+
   const keyCheck = [
     'Enter',
     'Backspace',
@@ -18,6 +22,10 @@ export const useCheckKeys = (keyPress) => {
   });
 
   const pressedKey = keyArray.toString();
+
+  /**
+   * Returned Value
+   */
 
   return pressedKey;
 };

@@ -5,6 +5,10 @@ import { EventDataContext } from './helper/EventDataContext';
 import React, { useState, useCallback } from 'react';
 
 export const CustomTextarea = () => {
+  /**
+   * React Hooks
+   */
+
   const [keyDownEventData, setKeyDownEventData] = useState({
     keyPress: '',
     selectionStart: 0,

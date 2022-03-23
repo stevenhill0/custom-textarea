@@ -8,6 +8,10 @@ import { useContext } from 'react';
 import './styles.css';
 
 export const TextareaView = ({ onKeyDown }) => {
+  /**
+   * React Hooks
+   */
+
   const keyDownEventData = useContext(EventDataContext);
 
   /**
@@ -17,16 +21,16 @@ export const TextareaView = ({ onKeyDown }) => {
   const controlWidth = useWidthState(keyDownEventData);
   const controlHeight = useHeightState(keyDownEventData);
 
-  return (
-    /**
-     * Component
-     */
+  /**
+   * Component
+   */
 
+  return (
     <textarea
       id="new"
       rows={controlHeight}
       cols={controlWidth}
-      className="custom-textArea textbox"
+      className="custom-textArea textBox"
       autoFocus
       onKeyDown={onKeyDown}
     ></textarea>

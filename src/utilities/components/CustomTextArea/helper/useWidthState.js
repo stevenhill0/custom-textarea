@@ -6,27 +6,28 @@ import { useFindLongestLine } from './useFindLongestLine';
 import { useState, useEffect } from 'react';
 
 export const useWidthState = (keyDownEventData) => {
-  const [textareaWidth, setTextareaWidth] = useState(1);
+  const { liveWidth, keyPress } = keyDownEventData;
 
-  const { liveWidth, keyPress, selectionStart } = keyDownEventData;
+  /**
+   * React Hooks
+   */
+
+  const [textareaWidth, setTextareaWidth] = useState(1);
 
   /**
    * Custom Hooks
    */
 
   const pressedKey = useCheckKeys(keyPress);
-
   const { firstLine } = useCountCharacters(keyDownEventData);
-
   const activeLine = useActiveLine(keyDownEventData, pressedKey);
-
   const longestLine = useFindLongestLine(keyPress, keyDownEventData);
 
   /**
    * Logic
    */
 
-  //Increase Width
+  //* Increase Width
   const maxLength = 7.41;
   const currentWidth = Math.floor(liveWidth / maxLength - 1);
 
@@ -39,15 +40,19 @@ export const useWidthState = (keyDownEventData) => {
     }
   }
 
-  //Decrease Width
+  //* Decrease Width
   const minLiveWidth = 36;
   const maxLiveWidth = 600;
+
+  /**
+   * React Hooks
+   */
 
   useEffect(() => {
     if (
       (keyPress === 'Backspace' &&
         liveWidth > minLiveWidth &&
-        activeLine * 7 + 33 < maxLiveWidth) || //* 7 + 33 is to balance the number difference between activeLine and maxLiveWidth
+        activeLine * 7 + 33 < maxLiveWidth) || //* * 7 + 33 is to balance the number difference between activeLine and maxLiveWidth
       (keyPress === 'Backspace' &&
         activeLine > firstLine &&
         activeLine > longestLine)
@@ -65,6 +70,10 @@ export const useWidthState = (keyDownEventData) => {
     longestLine,
     firstLine,
   ]);
+
+  /**
+   * Returned Value
+   */
 
   return textareaWidth;
 };

@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
 
 export const useHeightState = (keyDownEventData) => {
-  const [textareaHeight, setTextareaHeight] = useState(1);
-
   const { keyPress, liveHeight } = keyDownEventData;
+
+  /**
+   * React Hooks
+   */
+
+  const [textareaHeight, setTextareaHeight] = useState(1);
 
   /**
    * Logic
    */
 
-  // Increase Height
+  //* Increase Height
   if (keyPress === 'Enter') {
     const rowHeight = 15;
     const textRows = Math.ceil(liveHeight / rowHeight);
@@ -19,7 +23,11 @@ export const useHeightState = (keyDownEventData) => {
     }
   }
 
-  // Decrease Height
+  //* Decrease Height
+
+  /**
+   * Returned Value
+   */
 
   return textareaHeight;
 };

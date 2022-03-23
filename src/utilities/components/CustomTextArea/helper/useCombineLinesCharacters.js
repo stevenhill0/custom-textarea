@@ -26,5 +26,9 @@ export const useCombineLinesCharacters = (keyDownEventData) => {
     0,
   );
 
+  /**
+   * Returned Value
+   */
+
   return combinedLinesCharacters;
 };

@@ -5,10 +5,12 @@ import { useEffect, useReducer, useContext } from 'react';
 const TYPES = { LINES_ARRAY: 'linesArray', SELECTION_START: ' selectionStart' };
 
 export const useCreateLinesObject = (lastLine) => {
-  const value = useContext(EventDataContext);
-  const { selectionStart, liveWidth, keyPress } = value;
+  /**
+   * React Hooks
+   */
 
-  console.log(liveWidth);
+  const keyDownEventData = useContext(EventDataContext);
+  const { selectionStart, liveWidth, keyPress } = keyDownEventData;
 
   const reducer = (state, action) => {
     switch (action.type) {
@@ -24,15 +26,15 @@ export const useCreateLinesObject = (lastLine) => {
     selectionStart: 0,
   });
 
-  /**
-   * Effects
-   */
-
   useEffect(() => {
     if (keyPress === 'Enter') {
       dispatch({ type: TYPES.LINES_ARRAY });
     }
   }, [keyPress]);
+
+  /**
+   * Returned Value
+   */
 
   return state;
 };

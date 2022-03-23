@@ -3,6 +3,10 @@ import { useCreateLinesObject } from './useCreateLinesObject';
 import { useState, useEffect } from 'react';
 
 export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
+  /**
+   * React Hooks
+   */
+
   const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
 
   /**
@@ -13,7 +17,7 @@ export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
   const { linesArray } = linesObject;
 
   /**
-   * Effects
+   * React Hooks
    */
 
   useEffect(() => {
@@ -26,6 +30,10 @@ export const useCreateFilteredLinesArray = (keyPress, firstLine, lastLine) => {
       setFilteredLinesArray(newArray);
     }
   }, [keyPress, linesArray, firstLine, setFilteredLinesArray]);
+
+  /**
+   * Returned Value
+   */
 
   return filteredLinesArray;
 };

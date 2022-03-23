@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
 export const useCountEnterKeys = (pressedKey, typedOutCharacters) => {
+  /**
+   * React Hooks
+   */
+
   const [countEnterKeys, setCountEnterKeys] = useState(0);
 
   useEffect(() => {
@@ -10,6 +14,10 @@ export const useCountEnterKeys = (pressedKey, typedOutCharacters) => {
       });
     }
   }, [pressedKey, typedOutCharacters]);
+
+  /**
+   * Returned Value
+   */
 
   return countEnterKeys;
 };

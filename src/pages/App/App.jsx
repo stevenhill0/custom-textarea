@@ -28,7 +28,7 @@ function App() {
         {/* <div className="grid-container">
           <div
             tabIndex="0"
-            role="textbox"
+            role="textBox"
             id="one"
             onClick={switchOn}
             onKeyPress={switchOn}
