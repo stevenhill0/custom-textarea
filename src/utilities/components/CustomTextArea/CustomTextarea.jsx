@@ -1,8 +1,8 @@
 import { TextareaView } from './components/TextareaView/TextareaView';
-import { PassKeyDownEventData } from './components/IncreaseWidth/PassKeyDownEventData';
+import { PassKeyDownEventData } from './components/PassKeyDownEventData/PassKeyDownEventData';
 import { EventDataContext } from './helper/EventDataContext';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export const CustomTextarea = () => {
   /**
