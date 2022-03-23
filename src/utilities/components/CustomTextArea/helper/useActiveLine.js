@@ -18,6 +18,6 @@ export const useActiveLine = () => {
   /**
    * Returned Value
    */
-  console.log(activeLine);
+
   return activeLine;
 };

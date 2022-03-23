@@ -62,14 +62,7 @@ export const useWidthState = (keyDownEventData) => {
         return preValue - 1;
       });
     }
-  }, [
-    liveWidth,
-    keyPress,
-    setTextareaWidth,
-    activeLine,
-    longestLine,
-    firstLine,
-  ]);
+  }, [liveWidth, keyPress, activeLine, longestLine, firstLine]);
 
   /**
    * Returned Value

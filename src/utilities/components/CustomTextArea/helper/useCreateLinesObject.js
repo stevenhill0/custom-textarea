@@ -41,8 +41,8 @@ export const useCreateLinesObject = (keyPress, lastLine) => {
   /**
    * Returned Value
    */
-  console.log('linesArray:' + state.linesArray);
-  console.log('selectionStart: ' + state.selectionStart);
-  console.log(' lastLine: ' + lastLine);
+  // console.log('linesArray:' + state.linesArray);
+  // console.log('selectionStart: ' + state.selectionStart);
+  // console.log(' lastLine: ' + lastLine);
   return state;
 };
