@@ -1,12 +1,16 @@
 import { useCreateLinesObject } from './useCreateLinesObject';
 import { useCountCharacters } from './useCountCharacters';
+import { EventDataContext } from './EventDataContext';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
-export const useCreateFilteredLinesArray = (keyPress) => {
+export const useCreateFilteredLinesArray = () => {
   /**
    * React Hooks
    */
+
+  const keyDownEventData = useContext(EventDataContext);
+  const { keyPress } = keyDownEventData;
 
   const [filteredLinesArray, setFilteredLinesArray] = useState([0]);
 

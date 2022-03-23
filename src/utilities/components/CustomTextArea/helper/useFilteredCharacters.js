@@ -1,11 +1,21 @@
 import { useCountEnterKeys } from './useCountEnterKeys';
+import { EventDataContext } from './EventDataContext';
 
-export const useFilteredCharacters = (pressedKey, typedOutCharacters) => {
+import { useContext } from 'react';
+
+export const useFilteredCharacters = () => {
+  /**
+   * React Hooks
+   */
+
+  const keyDownEventData = useContext(EventDataContext);
+  const { typedOutCharacters } = keyDownEventData;
+
   /**
    * Custom Hooks
    */
 
-  const countedEnterKeys = useCountEnterKeys(pressedKey, typedOutCharacters);
+  const countedEnterKeys = useCountEnterKeys();
 
   const result = typedOutCharacters - countedEnterKeys;
 

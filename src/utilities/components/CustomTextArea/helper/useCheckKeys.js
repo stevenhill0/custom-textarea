@@ -1,4 +1,15 @@
-export const useCheckKeys = (keyPress) => {
+import { EventDataContext } from './EventDataContext';
+
+import { useContext } from 'react';
+
+export const useCheckKeys = () => {
+  /**
+   * React Hooks
+   */
+
+  const keyDownEventData = useContext(EventDataContext);
+  const { keyPress } = keyDownEventData;
+
   /**
    * Logic
    */

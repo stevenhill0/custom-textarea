@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useActiveLine as activeLine } from './useActiveLine';
 import { useCheckKeys } from './useCheckKeys';
 
-export const useCountBackspaceKeys = (keyPress, typedOutCharacters) => {
+export const useCountBackspaceKeys = (typedOutCharacters) => {
   const [countBackspaceKeys, setCountBackspaceKeys] = useState(0);
 
   /**
    * Custom Hooks
    */
 
-  const pressedKey = useCheckKeys(keyPress);
+  const pressedKey = useCheckKeys();
   // const activeLine = useActiveLine(filteredLinesArray, filteredCharacters);
 
   useEffect(() => {

@@ -1,18 +1,13 @@
 import { useCombineLinesCharacters } from './useCombineLinesCharacters';
 import { useFilteredCharacters } from './useFilteredCharacters';
 
-export const useActiveLine = (keyDownEventData, pressedKey) => {
-  const { typedOutCharacters } = keyDownEventData;
-
+export const useActiveLine = () => {
   /**
    * Custom Hooks
    */
 
-  const filteredCharacters = useFilteredCharacters(
-    pressedKey,
-    typedOutCharacters,
-  );
-  const combinedLinesCharacters = useCombineLinesCharacters(keyDownEventData);
+  const filteredCharacters = useFilteredCharacters();
+  const combinedLinesCharacters = useCombineLinesCharacters();
 
   /**
    * Logic
@@ -23,6 +18,6 @@ export const useActiveLine = (keyDownEventData, pressedKey) => {
   /**
    * Returned Value
    */
-
+  console.log(activeLine);
   return activeLine;
 };

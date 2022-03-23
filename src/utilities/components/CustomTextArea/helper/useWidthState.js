@@ -18,9 +18,9 @@ export const useWidthState = (keyDownEventData) => {
    * Custom Hooks
    */
 
-  const pressedKey = useCheckKeys(keyPress);
+  const pressedKey = useCheckKeys();
   const { firstLine } = useCountCharacters();
-  const activeLine = useActiveLine(keyDownEventData, pressedKey);
+  const activeLine = useActiveLine();
   const longestLine = useFindLongestLine(keyPress);
 
   /**
