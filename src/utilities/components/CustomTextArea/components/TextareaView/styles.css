@@ -1,1 +1,21 @@
+.custom-textarea {
+  overflow-y: hidden;
+  resize: horizontal;
+  /* cursor: text; */
+  /* margin: 0;
+    position: absolute;
+    top: 50%; */
+  /* -ms-transform: translateY(-50%);
+    transform: translateY(-50%);*/
+}
 
+.custom-textarea:hover {
+  border: 1px solid black;
+}
+.custom-textarea:focus {
+  outline: none;
+}
+
+.textBox {
+  overflow: hidden;
+}

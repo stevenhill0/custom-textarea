@@ -35,7 +35,7 @@ export const useCreateFilteredLinesArray = () => {
       newArray.unshift(firstLine);
       setFilteredLinesArray(newArray);
     }
-  }, [keyPress, linesArray, firstLine, setFilteredLinesArray]);
+  }, [keyPress, linesArray, firstLine]);
 
   /**
    * Returned Value

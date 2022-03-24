@@ -1,48 +1,20 @@
-.box {
-  background: red;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 10px;
-  background-color: #2196f3;
-  padding: 10px;
-}
-
-.grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
-  text-align: center;
-  font-size: 30px;
-}
-
-.switch {
-  padding: 0;
-}
-
-.custom-textArea {
+/* .custom-textarea {
   overflow-y: hidden;
   resize: horizontal;
-  /* cursor: text; */
-  /* margin: 0;
+  cursor: text;
+  margin: 0;
   position: absolute;
-  top: 50%; */
-  /* -ms-transform: translateY(-50%);
-  transform: translateY(-50%);*/
-}
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+} */
 
-.custom-textArea:hover {
+/* .custom-textarea:hover {
   border: 1px solid black;
 }
-.custom-textArea:focus {
+.custom-textarea:focus {
   outline: none;
-}
+} */
 
 .App {
   text-align: center;

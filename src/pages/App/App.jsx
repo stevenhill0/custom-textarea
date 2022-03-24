@@ -24,25 +24,6 @@ function App() {
         >
           {counter === 1 ? <DragArea /> : null}
         </div>
-
-        {/* <div className="grid-container">
-          <div
-            tabIndex="0"
-            role="textBox"
-            id="one"
-            onClick={switchOn}
-            onKeyPress={switchOn}
-          >
-            {counter === 1 ? <CustomTextarea /> : null}
-          </div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div>
-        </div> */}
       </div>
     </DndProvider>
   );

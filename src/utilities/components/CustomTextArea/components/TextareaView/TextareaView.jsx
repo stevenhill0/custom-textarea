@@ -30,7 +30,7 @@ export const TextareaView = ({ onKeyDown }) => {
       id="new"
       rows={controlHeight}
       cols={controlWidth}
-      className="custom-textArea textBox"
+      className="custom-textarea textBox"
       autoFocus
       onKeyDown={onKeyDown}
     ></textarea>
