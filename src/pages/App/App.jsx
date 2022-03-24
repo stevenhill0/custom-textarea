@@ -1,4 +1,3 @@
-import CustomTextarea from '../../utilities/components/CustomTextArea/CustomTextarea';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useState } from 'react';
