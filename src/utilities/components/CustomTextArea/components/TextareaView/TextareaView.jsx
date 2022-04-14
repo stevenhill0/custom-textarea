@@ -18,8 +18,14 @@ export const TextareaView = ({ onKeyDown }) => {
    * Custom Hooks
    */
 
-  const controlWidth = useWidthState(keyDownEventData);
-  const controlHeight = useHeightState(keyDownEventData);
+  const currentWidth = useWidthState(keyDownEventData);
+  const { textareaRef, textAreaChange } = useHeightState(keyDownEventData);
+
+  // const test = (event) => {
+  //   event.target.style.height = '5px';
+  //   const scrollHeight = event.target.scrollHeight;
+  //   event.target.style.height = scrollHeight + 'px';
+  // };
 
   /**
    * Component
@@ -27,12 +33,14 @@ export const TextareaView = ({ onKeyDown }) => {
 
   return (
     <textarea
-      id="new"
-      rows={controlHeight}
-      cols={controlWidth}
-      className="custom-textarea textBox"
+      ref={textareaRef}
+      // id="new"
+      // rows={currentHeight}
+      cols={currentWidth}
+      className="custom-textarea"
       autoFocus
       onKeyDown={onKeyDown}
+      onChange={textAreaChange}
     ></textarea>
   );
 };

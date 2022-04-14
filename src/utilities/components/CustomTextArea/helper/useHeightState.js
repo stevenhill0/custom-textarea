@@ -1,47 +1,70 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useHeightState = (keyDownEventData) => {
-  const { keyPress, liveHeight, liveWidth, typedOutCharacters } =
+  const { keyPress, liveHeight, liveRowCount, typedOutCharacters } =
     keyDownEventData;
 
   /**
    * React Hooks
    */
 
-  const [textareaHeight, setTextareaHeight] = useState(1);
+  // const [currentHeight, setCurrentHeight] = useState(1);
+  const [reRender, setReRender] = useState();
+  const textareaRef = useRef(null);
 
   /**
    * Logic
    */
 
-  //* Increase Height
-  const maxLiveWidth = 600;
+  //* Increase/Decrease Height
 
-  const rowHeight = 15; //height of each row
-  const textRows = Math.ceil(liveHeight / rowHeight);
-  const textRows2 = Math.ceil(liveHeight / rowHeight) - 1;
+  useEffect(() => {
+    if (textareaRef && textareaRef.current) {
+      textareaRef.current.style.height = '0px';
 
-  if (keyPress === 'Enter') {
-    if (textRows > textareaHeight) {
-      setTextareaHeight(textRows);
+      const scrollHeight = textareaRef.current.scrollHeight;
+      textareaRef.current.style.height = scrollHeight + 'px';
     }
-  }
+  }, [reRender]);
 
-  // else if (textRows > textareaHeight) {
-  //   setTextareaHeight(textRows2);
-  // }
+  const textAreaChange = (event) => {
+    const countCharacters = event.target.value.length;
+    const firstLine = 68;
+    let finalCountLines = 0;
 
-  console.log('liveWidth: ' + liveWidth);
-  console.log(' typedOutCharacters: ' + typedOutCharacters);
-  console.log('liveHeight: ' + liveHeight);
-  console.log('textRows: ' + textRows);
-  console.log('textareaHeight: ' + textareaHeight);
+    const countLines = countCharacters / firstLine;
+    finalCountLines = Math.floor(countLines);
 
-  //* Decrease Height
+    const result1 = firstLine * finalCountLines + 1;
+    const result2 = firstLine * finalCountLines - 3;
+
+    console.log('Result 1: ' + result1);
+    console.log('Result 2: ' + result2);
+    console.log('keyPress: ' + keyPress);
+    console.log('countCharacters: ' + countCharacters);
+    console.log('finalCountLines: ' + finalCountLines);
+
+    //* Subtract lines
+
+    if (
+      countCharacters === result1 ||
+      keyPress === 'Enter' ||
+      keyPress === 'Backspace' ||
+      /\s/.test(event.target.value)
+    ) {
+      setReRender(event.target.value);
+    }
+
+    if (keyPress === 'Backspace') {
+      setReRender(event.target.value);
+    }
+  };
 
   /**
    * Returned Value
    */
 
-  return textareaHeight;
+  const height = { textareaRef, textAreaChange };
+
+  return height;
 };
