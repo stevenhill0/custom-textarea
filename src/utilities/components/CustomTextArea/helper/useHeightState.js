@@ -1,14 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
 export const useHeightState = (keyDownEventData) => {
-  const { keyPress, liveHeight, liveRowCount, typedOutCharacters } =
-    keyDownEventData;
+  const { keyPress } = keyDownEventData;
 
   /**
    * React Hooks
    */
 
-  // const [currentHeight, setCurrentHeight] = useState(1);
   const [reRender, setReRender] = useState();
   const textareaRef = useRef(null);
 
@@ -36,15 +34,6 @@ export const useHeightState = (keyDownEventData) => {
     finalCountLines = Math.floor(countLines);
 
     const result1 = firstLine * finalCountLines + 1;
-    const result2 = firstLine * finalCountLines - 3;
-
-    console.log('Result 1: ' + result1);
-    console.log('Result 2: ' + result2);
-    console.log('keyPress: ' + keyPress);
-    console.log('countCharacters: ' + countCharacters);
-    console.log('finalCountLines: ' + finalCountLines);
-
-    //* Subtract lines
 
     if (
       countCharacters === result1 ||
