@@ -21,7 +21,7 @@ export const TextareaView = ({ onKeyDown }) => {
   const currentWidth = useWidthState(keyDownEventData);
   const { textareaRef, textAreaChange } = useHeightState(keyDownEventData);
 
-  //* Commented out: simple version of auto height - it still does not change state on time: use test variable in onChange attribute
+  //* Commented out: Alternative simple version of auto height - it still does not change state on time: use test variable in onChange attribute
   // const test = (event) => {
   //   event.target.style.height = '5px';
   //   const scrollHeight = event.target.scrollHeight;
