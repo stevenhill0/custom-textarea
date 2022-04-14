@@ -43,10 +43,6 @@ export const useHeightState = (keyDownEventData) => {
     ) {
       setReRender(event.target.value);
     }
-
-    if (keyPress === 'Backspace') {
-      setReRender(event.target.value);
-    }
   };
 
   /**
