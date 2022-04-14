@@ -49,12 +49,17 @@ label {
 }
 
 .custom-textarea {
-  width: 500px;
-  overflow-x: hidden;
+  /* width: 200px; */
+  /* overflow-x: hidden;
   overflow-y: auto;
   resize: horizontal;
   display: block;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; */
+
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
 
   /* cursor: text; */
   /* margin: 0;
